@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -66,7 +67,12 @@ public class Player : MonoBehaviour {
 	private float lastDoActionPressed;
 	public bool isDoActionPressed { get; private set; }
 
-	private void Awake() {
+	[Header("SFX")]
+	[SerializeField] private EventReference moveSound;
+	[SerializeField] private EventReference twistSound;
+	[SerializeField] private EventReference hurtSound;
+
+    private void Awake() {
 		this.rb = this.GetComponent<Rigidbody2D>();
 
 		this.SlimeCatalogue = new Dictionary<string, SlimeForm> {
@@ -198,8 +204,6 @@ public class Player : MonoBehaviour {
 	}
 
 	internal void AnimationFinished(string animationName) {
-		Debug.Log("@AnimationFinished: " + animationName);
-
 		switch (animationName) {
 			case AnimationState.TwistIn:
                 this.currentForm.animator.gameObject.SetActive(false);
@@ -218,4 +222,27 @@ public class Player : MonoBehaviour {
 
 		}
 	}
+
+	internal void AnimationStart(string animationName) {
+        switch (animationName) {
+            case AnimationState.MoveUp:
+            case AnimationState.MoveDown:
+            case AnimationState.MoveLeft:
+            case AnimationState.MoveRight:
+                GameManager.instance.PlayOneShot(this.moveSound, this.gameObject.transform.position);
+                break;
+
+            case AnimationState.TwistIn:
+                GameManager.instance.PlayOneShot(this.twistSound, this.gameObject.transform.position);
+                break;
+
+            case AnimationState.Hurt:
+                GameManager.instance.PlayOneShot(this.hurtSound, this.gameObject.transform.position);
+                break;
+
+            default:
+                throw new System.Exception("Unknown animation event for '" + animationName + "'");
+
+        }
+    }
 }
