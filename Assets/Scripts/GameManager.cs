@@ -1,33 +1,83 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using FMODUnity;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
+internal enum GameOverMethod {
+    LevelIntegrity, ZeroHealth
+}
 
 public class GameManager : MonoBehaviour {
 
 	internal LayerMask groundLayer;
 	internal Player player;
+    internal Scene currentScene;
 
-	[SerializeField] private EventReference gameMusic;
+	[SerializeField] private Slider levelIntegrityBar;
+
+    [SerializeField] private GameObject gameOver_levelIntegrity;
+    [SerializeField] private GameObject gameOver_hpZero;
+    [SerializeField] private LevelTransition levelTransition;
+
+    private float maxLevelIntegrity;
+    internal bool isGameOver;
 
     public static GameManager instance { get; private set; }
 	private void Awake() {
-		if (instance != null) {
-            UnityEngine.Debug.LogError("Found more than one GameManager in the scene.");
+        this.levelTransition.gameObject.SetActive(true);
+
+        if (instance != null) {
+            Debug.LogError("Found more than one GameManager in the scene.");
 		}
 
 		instance = this;
 
-		this.groundLayer = LayerMask.GetMask("Ground");
+        this.currentScene = SceneManager.GetActiveScene();
+        this.groundLayer = LayerMask.GetMask("Ground");
         this.player = FindAnyObjectByType<Player>();
+
+        this.maxLevelIntegrity = this.levelIntegrityBar.maxValue;
     }
 
     public void Start() {
-        // TODO: let's transition between songs using a collider- we can handle that logic in FMOD using parameters
-        RuntimeManager.PlayOneShot(this.gameMusic, this.gameObject.transform.position);
+        this.isGameOver = false;
     }
 
-    public void PlayOneShot(EventReference sound, Vector3? worldPosition=null) {
-        RuntimeManager.PlayOneShot(sound, (worldPosition.HasValue ? worldPosition.Value : this.gameObject.transform.position));
+    public void ChangeLevelIntegrity(int amount) {
+        levelIntegrityBar.value = Mathf.Max(Mathf.Min(levelIntegrityBar.value + amount, this.maxLevelIntegrity), 0);
+
+    }
+
+    public void OnLevelIntegrityChanged() {
+        if (levelIntegrityBar.value <= 0) {
+            this.TriggerGameOver(GameOverMethod.LevelIntegrity);
+        }
+    }
+
+    internal void TriggerGameOver(GameOverMethod how) {
+        this.isGameOver = true;
+        switch (how) {
+            case GameOverMethod.LevelIntegrity:
+                this.gameOver_levelIntegrity.SetActive(true);
+                break;
+
+            case GameOverMethod.ZeroHealth:
+                this.gameOver_hpZero.SetActive(true);
+                break;
+
+            default:
+                throw new System.Exception("Unknown game over method '" + how + "'");
+
+        }
+    }
+
+    public void ChangeScene(string sceneName) {
+        levelTransition.ChangeScene(sceneName);
+    }
+
+    public void Restart() {
+        Debug.Log("@Restart");
+        this.ChangeScene(this.currentScene.name);
     }
 }

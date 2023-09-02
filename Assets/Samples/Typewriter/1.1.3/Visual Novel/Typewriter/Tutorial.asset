@@ -1,0 +1,639 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d0878fa1be1f546a2a65661326a877, type: 3}
+  m_Name: Tutorial
+  m_EditorClassIdentifier: 
+  TableName: Tutorial
+  Rules:
+  - rid: 669309055316262983
+  - rid: 669309055316262984
+  - rid: 669309055316263001
+  - rid: 669309055316263004
+  - rid: 669309055316263005
+  - rid: 669309055316263006
+  - rid: 669309055316263007
+  - rid: 669309055316263008
+  - rid: 669309055316263009
+  - rid: 669309055316263087
+  - rid: 669309055316263088
+  - rid: 669309055316263089
+  - rid: 669309055316263090
+  - rid: 669309055316263091
+  - rid: 669309055316263092
+  - rid: 669309055316263093
+  - rid: 669309055316263094
+  - rid: 669309055316263095
+  Facts:
+  - rid: 669309055316262980
+  - rid: 669309055316262981
+  - rid: 669309055316263002
+  - rid: 669309055316263003
+  - rid: 669309055316263010
+  Events:
+  - rid: 669309055316262982
+  - rid: 669309055316263000
+  - rid: 669309055316263084
+  - rid: 669309055316263086
+  - rid: 669309055316263055
+  - rid: 669309055316263057
+  - rid: 669309055316263061
+  - rid: 669309055316263062
+  references:
+    version: 2
+    RefIds:
+    - rid: 669309055316262980
+      type: {class: FactEntry, ns: Aarthificial.Typewriter.Entries, asm: Aarthificial.Typewriter}
+      data:
+        ID: 303123
+        Key: moveCount
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+    - rid: 669309055316262981
+      type: {class: FactEntry, ns: Aarthificial.Typewriter.Entries, asm: Aarthificial.Typewriter}
+      data:
+        ID: 303124
+        Key: twistCount
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+    - rid: 669309055316262982
+      type: {class: EventEntry, ns: Aarthificial.Typewriter.Entries, asm: Aarthificial.Typewriter}
+      data:
+        ID: 303125
+        Key: onLevelStart
+        Scope:
+          InternalID: 0
+        Triggers:
+          List: []
+        Once: 1
+        Padding: 0
+        Criteria: []
+        Modifications: []
+    - rid: 669309055316262983
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303126
+        Key: start_1
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 1388544
+        Once: 1
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        Text: Where is my teddy bear?
+        _speaker:
+          InternalID: 303113
+    - rid: 669309055316262984
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303127
+        Key: start_2
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303126
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        Text: I must have forgotten him at the dungeon enterance.
+        _speaker:
+          InternalID: 303113
+    - rid: 669309055316263000
+      type: {class: EventEntry, ns: Aarthificial.Typewriter.Entries, asm: Aarthificial.Typewriter}
+      data:
+        ID: 303128
+        Key: onTellPlayerToMove
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List: []
+        Once: 1
+        Padding: 0
+        Criteria:
+        - FactReference:
+            InternalID: 303138
+          Min: 1
+          Max: 1
+          Operation: 0
+        Modifications: []
+    - rid: 669309055316263001
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303129
+        Key: move_1a
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303143
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        Text: Hey, Frank, have you noticed something weird about how we move?
+        _speaker:
+          InternalID: 303130
+    - rid: 669309055316263002
+      type: {class: SpeakerEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303130
+        Key: skeleton1a
+        Scope:
+          InternalID: 0
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        DisplayName: Bill
+    - rid: 669309055316263003
+      type: {class: SpeakerEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303131
+        Key: skeleton1b
+        Scope:
+          InternalID: 0
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        DisplayName: Frank
+    - rid: 669309055316263004
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303132
+        Key: move_2a
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303129
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        Text: ou mean like how we're just magically animated bones without any tendons
+          or muscles? Yeah, I've noticed.
+        _speaker:
+          InternalID: 303131
+    - rid: 669309055316263005
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303133
+        Key: move_3a
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303132
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        Text: Nah, not that. I mean how we can only move up, down, left, or right.
+          It's like we're controlled by arrow keys or something.
+        _speaker:
+          InternalID: 303130
+    - rid: 669309055316263006
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303134
+        Key: move_4a
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303133
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        Text: Arrow keys? Are those like the arrows that adventurers occasionally
+          shoot at us, but somehow never hit?
+        _speaker:
+          InternalID: 303131
+    - rid: 669309055316263007
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303135
+        Key: move_5a
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303134
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        Text: No, silly! Arrow keys on a keyboard. You know, those things humans
+          use to... uh... type?
+        _speaker:
+          InternalID: 303130
+    - rid: 669309055316263008
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303136
+        Key: move_6a
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303135
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        Text: Type? As in like, a blood type? O-Positive? AB-Negative?
+        _speaker:
+          InternalID: 303131
+    - rid: 669309055316263009
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303137
+        Key: move_7a
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303136
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        Text: You're bony hopeless, you know that? Never mind.
+        _speaker:
+          InternalID: 303130
+    - rid: 669309055316263010
+      type: {class: FactEntry, ns: Aarthificial.Typewriter.Entries, asm: Aarthificial.Typewriter}
+      data:
+        ID: 303138
+        Key: nearSkeleton1
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+    - rid: 669309055316263055
+      type: {class: TriggerEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303139
+        Key: update_nearSkeleton1_true
+        Scope:
+          InternalID: 0
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications:
+        - FactReference:
+            InternalID: 303138
+          Value: 1
+          Operation: 0
+    - rid: 669309055316263057
+      type: {class: TriggerEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303140
+        Key: update_nearSkeleton1_false
+        Scope:
+          InternalID: 0
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications:
+        - FactReference:
+            InternalID: 303138
+          Value: 0
+          Operation: 0
+    - rid: 669309055316263061
+      type: {class: TriggerEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303141
+        Key: update_moveCount
+        Scope:
+          InternalID: 0
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications:
+        - FactReference:
+            InternalID: 303123
+          Value: 1
+          Operation: 2
+    - rid: 669309055316263062
+      type: {class: TriggerEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303142
+        Key: update_twistCount
+        Scope:
+          InternalID: 0
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications:
+        - FactReference:
+            InternalID: 303124
+          Value: 1
+          Operation: 2
+    - rid: 669309055316263084
+      type: {class: DecisionEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303143
+        Key: onTellPlayerToMove_notMovedMuch
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303128
+        Once: 0
+        Padding: 0
+        Criteria:
+        - FactReference:
+            InternalID: 303123
+          Min: -2147483648
+          Max: 10
+          Operation: 3
+        Modifications: []
+    - rid: 669309055316263086
+      type: {class: DecisionEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303144
+        Key: onTellPlayerToMove_movedLots
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303128
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+    - rid: 669309055316263087
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303145
+        Key: move_1b
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303144
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        Text: Hey, look at that slime go! Moving back and forth like a pro!
+        _speaker:
+          InternalID: 303130
+    - rid: 669309055316263088
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303146
+        Key: move_2b
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303145
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        Text: Yeah, I heard it's going back to the entrance to get its teddy bear.
+          Cute, right?
+        _speaker:
+          InternalID: 303131
+    - rid: 669309055316263089
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303147
+        Key: move_3b
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303146
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        Text: Absolutely! Go, slime, go! You can do it!
+        _speaker:
+          InternalID: 303130
+    - rid: 669309055316263090
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303148
+        Key: move_4b
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303147
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        Text: Hope it doesn't mess up the Level Integrity though. The boss gets really
+          cranky about that.
+        _speaker:
+          InternalID: 303131
+    - rid: 669309055316263091
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303149
+        Key: move_5b
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303148
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        Text: Oh, for sure. But you gotta admire its determination. Sliding all the
+          way back just for a teddy bear!
+        _speaker:
+          InternalID: 303130
+    - rid: 669309055316263092
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303150
+        Key: move_6b
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303149
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        Text: Totally! I wish I had a teddy bear... or flesh.
+        _speaker:
+          InternalID: 303131
+    - rid: 669309055316263093
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303151
+        Key: move_7b
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303150
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        Text: Haha, yeah. Flesh would be nice. But in the meantime, let's keep cheering
+          on our slimy friend!
+        _speaker:
+          InternalID: 303130
+    - rid: 669309055316263094
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303152
+        Key: move_8b
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303151
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        Text: Agreed. Go, slime, go! Retrieve that teddy bear and keep that Level
+          Integrity intact!
+        _speaker:
+          InternalID: 303131
+    - rid: 669309055316263095
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303153
+        Key: move_9b
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303152
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        Text: You got this, buddy! Show that dungeon who's boss... well, not the
+          actual boss, but you know what I mean.
+        _speaker:
+          InternalID: 303130

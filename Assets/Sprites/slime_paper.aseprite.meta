@@ -1,0 +1,1619 @@
+fileFormatVersion: 2
+guid: 806c3c481af047e4ea552cd71fefd252
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 16
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 638291692162949445
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: slime_paper_Frame_0
+    originalName: 
+    pivot: {x: 0.5217391, y: -0.11538462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 69
+      y: 68
+      width: 23
+      height: 26
+    spriteID: a9d8d44461a96be4fae63bec1e5acd07
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 69, y: 68}
+  - name: slime_paper_Frame_1
+    originalName: 
+    pivot: {x: 0.52, y: -0.125}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 36
+      y: 4
+      width: 25
+      height: 24
+    spriteID: e32f688d55dd6d54ca158d5f4cf2291a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 36, y: 4}
+  - name: slime_paper_Frame_2
+    originalName: 
+    pivot: {x: 0.5185185, y: -0.13636364}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 102
+      y: 4
+      width: 27
+      height: 22
+    spriteID: e7807f2154f69b84f9524ea2ac620208
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 102, y: 4}
+  - name: slime_paper_Frame_21
+    originalName: 
+    pivot: {x: 0.5, y: -0.11538462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 102
+      y: 226
+      width: 20
+      height: 26
+    spriteID: 70a5d04f06ec25b4e8589ee4dccbb4aa
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 102, y: 226}
+  - name: slime_paper_Frame_22
+    originalName: 
+    pivot: {x: 0.5, y: -0.11538462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 24
+      height: 26
+    spriteID: 39adebdc1f529ee4f82faa55356a46eb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: slime_paper_Frame_24
+    originalName: 
+    pivot: {x: 0.52380955, y: -0.11538462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 208
+      width: 21
+      height: 26
+    spriteID: 13ceb64a461f22c439dda227e5739b95
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 208}
+  - name: slime_paper_Frame_26
+    originalName: 
+    pivot: {x: 0.5263158, y: -0.071428575}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 102
+      y: 154
+      width: 19
+      height: 28
+    spriteID: 114676e8646786b479909a224fba1432
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 102, y: 154}
+  - name: slime_paper_Frame_27
+    originalName: 
+    pivot: {x: 0.5294118, y: -0.033333335}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 137
+      y: 72
+      width: 17
+      height: 30
+    spriteID: 2ed6f5ee93bd1404dbbac2c5c540d254
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 137, y: 72}
+  - name: slime_paper_Frame_28
+    originalName: 
+    pivot: {x: 0.47058824, y: -0.033333335}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 137
+      y: 110
+      width: 17
+      height: 30
+    spriteID: 4cfb62dae3d2f39478e9be465150f93d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 137, y: 110}
+  - name: slime_paper_Frame_29
+    originalName: 
+    pivot: {x: 0.5, y: -0.11538462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 137
+      y: 224
+      width: 18
+      height: 26
+    spriteID: c8c0c81b647d1eb47b1d3cde283f4576
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 137, y: 224}
+  - name: slime_paper_Frame_30
+    originalName: 
+    pivot: {x: 0.4666667, y: -0.11538462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 165
+      y: 156
+      width: 15
+      height: 26
+    spriteID: 22fadcb12c07f094bbfe279e43f6f571
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 165, y: 156}
+  - name: slime_paper_Frame_3
+    originalName: 
+    pivot: {x: 0.4, y: -0.11538462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 165
+      y: 224
+      width: 10
+      height: 26
+    spriteID: e3774180ff61de848a5c60307fdf1c7c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 165, y: 224}
+  - name: slime_paper_Frame_4
+    originalName: 
+    pivot: {x: 0.2857143, y: -0.11538462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 190
+      y: 140
+      width: 7
+      height: 26
+    spriteID: 8de1967bba7b28c4e83479e83adec2a4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 190, y: 140}
+  - name: slime_paper_Frame_5
+    originalName: 
+    pivot: {x: 0.25, y: -0.11538462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 190
+      y: 72
+      width: 8
+      height: 26
+    spriteID: 7284d4d1412f5954d9746e7d9a6679af
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 190, y: 72}
+  - name: slime_paper_Frame_6
+    originalName: 
+    pivot: {x: 0.375, y: -0.11538462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 190
+      y: 106
+      width: 8
+      height: 26
+    spriteID: 7093a43b9e1c9ff4881e47cfc5ace9c3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 190, y: 106}
+  - name: slime_paper_Frame_7
+    originalName: 
+    pivot: {x: 0.42857146, y: -0.11538462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 190
+      y: 174
+      width: 7
+      height: 26
+    spriteID: b93abc9d19a917944868d3398ad15c23
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 190, y: 174}
+  - name: slime_paper_Frame_8
+    originalName: 
+    pivot: {x: 0.52, y: -0.125}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 36
+      y: 36
+      width: 25
+      height: 24
+    spriteID: 785e3e3152a883845a2646aa2d576a7a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 36, y: 36}
+  - name: slime_paper_Frame_9
+    originalName: 
+    pivot: {x: 0.5217391, y: -0.11538462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 69
+      y: 102
+      width: 23
+      height: 26
+    spriteID: 26325d7a76f7bb54f8119544a3cf6a38
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 69, y: 102}
+  - name: slime_paper_Frame_10
+    originalName: 
+    pivot: {x: 0.52, y: -0.125}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 36
+      y: 68
+      width: 25
+      height: 24
+    spriteID: 40d103051ba5f9e41a98a82ed5d6ec90
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 36, y: 68}
+  - name: slime_paper_Frame_11
+    originalName: 
+    pivot: {x: 0.5185185, y: -0.13636364}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 102
+      y: 34
+      width: 27
+      height: 22
+    spriteID: 4de24ada22e230e48b32205417f9399b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 102, y: 34}
+  - name: slime_paper_Frame_12
+    originalName: 
+    pivot: {x: 0.52, y: -0.125}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 36
+      y: 100
+      width: 25
+      height: 24
+    spriteID: 116407095ba11d141accb1f164f51162
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 36, y: 100}
+  - name: slime_paper_Frame_13
+    originalName: 
+    pivot: {x: 0.5217391, y: -0.11538462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 69
+      y: 136
+      width: 23
+      height: 26
+    spriteID: df94cbcc61982f241a9042a3dc5026ab
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 69, y: 136}
+  - name: slime_paper_Frame_14
+    originalName: 
+    pivot: {x: 0.52, y: -0.125}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 36
+      y: 132
+      width: 25
+      height: 24
+    spriteID: 26e63d13a79579c4789c749cf4c70f7e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 36, y: 132}
+  - name: slime_paper_Frame_15
+    originalName: 
+    pivot: {x: 0.5185185, y: -0.13636364}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 102
+      y: 64
+      width: 27
+      height: 22
+    spriteID: 5efa68dde2e77d2408a28edbb6577e92
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 102, y: 64}
+  - name: slime_paper_Frame_16
+    originalName: 
+    pivot: {x: 0.52, y: -0.125}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 36
+      y: 164
+      width: 25
+      height: 24
+    spriteID: 2dd407c13b82aa74983f26fc3b4e3dfd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 36, y: 164}
+  - name: slime_paper_Frame_17
+    originalName: 
+    pivot: {x: 0.5217391, y: -0.11538462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 69
+      y: 170
+      width: 23
+      height: 26
+    spriteID: ed5f9390ab2d2e54da5f779f165b4cc4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 69, y: 170}
+  - name: slime_paper_Frame_18
+    originalName: 
+    pivot: {x: 0.52, y: -0.125}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 36
+      y: 196
+      width: 25
+      height: 24
+    spriteID: 95d07bce40f4b3246b308a8a064776c6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 36, y: 196}
+  - name: slime_paper_Frame_19
+    originalName: 
+    pivot: {x: 0.5185185, y: -0.13636364}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 102
+      y: 94
+      width: 27
+      height: 22
+    spriteID: 38e7fcb5b796398458fd0b16d829bf22
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 102, y: 94}
+  - name: slime_paper_Frame_20
+    originalName: 
+    pivot: {x: 0.52, y: -0.125}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 36
+      y: 228
+      width: 25
+      height: 24
+    spriteID: ed65a7df534ac7241a13e03c41c640bd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 36, y: 228}
+  - name: slime_paper_Frame_23
+    originalName: 
+    pivot: {x: 0.5217391, y: -0.11538462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 69
+      y: 204
+      width: 23
+      height: 26
+    spriteID: 8ae71e34b663d0d4da01b65f065575a6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 69, y: 204}
+  - name: slime_paper_Frame_25
+    originalName: 
+    pivot: {x: 0.52, y: -0.125}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 69
+      y: 4
+      width: 25
+      height: 24
+    spriteID: e900cced91452474d8641337c33f26b1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 69, y: 4}
+  - name: slime_paper_Frame_31
+    originalName: 
+    pivot: {x: 0.5185185, y: -0.13636364}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 102
+      y: 124
+      width: 27
+      height: 22
+    spriteID: 244efb009ed7a5441b5082ac2e4c8a0e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 102, y: 124}
+  - name: slime_paper_Frame_32
+    originalName: 
+    pivot: {x: 0.52, y: -0.125}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 69
+      y: 36
+      width: 25
+      height: 24
+    spriteID: e340622d97a31514685c2df4dbf179f3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 69, y: 36}
+  - name: slime_paper_Frame_33
+    originalName: 
+    pivot: {x: 0.5217391, y: -0.11538462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 38
+      width: 23
+      height: 26
+    spriteID: 84ba15106ad958445abc7a9d8568b16e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 38}
+  - name: slime_paper_Frame_34
+    originalName: 
+    pivot: {x: 0.5, y: -0.11538462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 137
+      y: 4
+      width: 20
+      height: 26
+    spriteID: e72aa2383a37b7b4ca31556ac583124d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 137, y: 4}
+  - name: slime_paper_Frame_35
+    originalName: 
+    pivot: {x: 0.5, y: -0.11538462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 137
+      y: 38
+      width: 20
+      height: 26
+    spriteID: 5c41ebd35b1f6cc47be60088357d3356
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 137, y: 38}
+  - name: slime_paper_Frame_36
+    originalName: 
+    pivot: {x: 0.5217391, y: -0.11538462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 72
+      width: 23
+      height: 26
+    spriteID: 10de171a4aff60341b9c3ff4030bf3a6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 72}
+  - name: slime_paper_Frame_37
+    originalName: 
+    pivot: {x: 0.5294118, y: -0.033333335}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 137
+      y: 148
+      width: 17
+      height: 30
+    spriteID: 5f87a44d9b59dfe459cffc031fa23c00
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 137, y: 148}
+  - name: slime_paper_Frame_31
+    originalName: 
+    pivot: {x: 0.47058824, y: -0.033333335}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 137
+      y: 186
+      width: 17
+      height: 30
+    spriteID: d4f9b097bdf30f147b1c255c8529ee64
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 137, y: 186}
+  - name: slime_paper_Frame_32
+    originalName: 
+    pivot: {x: 0.5294118, y: -0.033333335}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 165
+      y: 4
+      width: 17
+      height: 30
+    spriteID: d5560bc67ef406b448f3454557044422
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 165, y: 4}
+  - name: slime_paper_Frame_33
+    originalName: 
+    pivot: {x: 0.47058824, y: -0.033333335}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 165
+      y: 42
+      width: 17
+      height: 30
+    spriteID: b2b0e600d94f9634c93caa986d7721f1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 165, y: 42}
+  - name: slime_paper_Frame_34
+    originalName: 
+    pivot: {x: 0.5294118, y: -0.033333335}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 165
+      y: 80
+      width: 17
+      height: 30
+    spriteID: 397dfe6c54194e44aa179ae4bf028929
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 165, y: 80}
+  - name: slime_paper_Frame_35
+    originalName: 
+    pivot: {x: 0.47058824, y: -0.033333335}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 165
+      y: 118
+      width: 17
+      height: 30
+    spriteID: 69691c76a105fd34583601e08d3662df
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 165, y: 118}
+  - name: slime_paper_Frame_36
+    originalName: 
+    pivot: {x: 0.5263158, y: -0.071428575}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 102
+      y: 190
+      width: 19
+      height: 28
+    spriteID: b46047c461e49dc44a79f99ee208bafb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 102, y: 190}
+  - name: slime_paper_Frame_37
+    originalName: 
+    pivot: {x: 0.5217391, y: -0.11538462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 106
+      width: 23
+      height: 26
+    spriteID: 927b5860948879d49aa976c8b4f7f7fa
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 106}
+  - name: slime_paper_Frame_38
+    originalName: 
+    pivot: {x: 0.5217391, y: -0.11538462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 140
+      width: 23
+      height: 26
+    spriteID: f4923b00b9ba1724fb09477ac8219c0f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 140}
+  - name: slime_paper_Frame_46
+    originalName: 
+    pivot: {x: 0.2857143, y: -0.11538462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 190
+      y: 208
+      width: 7
+      height: 26
+    spriteID: bf65c51b1fc18574994257de091e6661
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 190, y: 208}
+  - name: slime_paper_Frame_47
+    originalName: 
+    pivot: {x: 0.4, y: -0.11538462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 190
+      y: 38
+      width: 10
+      height: 26
+    spriteID: b0342172484e8ef44add1fba1ca1f93b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 190, y: 38}
+  - name: slime_paper_Frame_48
+    originalName: 
+    pivot: {x: 0.4666667, y: -0.11538462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 165
+      y: 190
+      width: 15
+      height: 26
+    spriteID: 3bfc9994d59929a40b09636697cc9495
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 165, y: 190}
+  - name: slime_paper_Frame_49
+    originalName: 
+    pivot: {x: 0.5, y: -0.11538462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 190
+      y: 4
+      width: 18
+      height: 26
+    spriteID: b4e93d6cb1c33e84d913c773cedcb4e3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 190, y: 4}
+  - name: slime_paper_Frame_50
+    originalName: 
+    pivot: {x: 0.5217391, y: -0.11538462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 174
+      width: 23
+      height: 26
+    spriteID: d03c9788e44550f49ad09336b4e3f9f8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 174}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: -846389049
+    name: slime_paper
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: slime_paper_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 4
+        y: 3
+        width: 23
+        height: 26
+      spriteId: a9d8d44461a96be4fae63bec1e5acd07
+    - name: slime_paper_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 3
+        y: 3
+        width: 25
+        height: 24
+      spriteId: e32f688d55dd6d54ca158d5f4cf2291a
+    - name: slime_paper_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 2
+        y: 3
+        width: 27
+        height: 22
+      spriteId: e7807f2154f69b84f9524ea2ac620208
+    - name: slime_paper_Frame_21
+      frameIndex: 21
+      cellRect:
+        x: 6
+        y: 3
+        width: 20
+        height: 26
+      spriteId: 70a5d04f06ec25b4e8589ee4dccbb4aa
+    - name: slime_paper_Frame_22
+      frameIndex: 22
+      cellRect:
+        x: 4
+        y: 3
+        width: 24
+        height: 26
+      spriteId: 39adebdc1f529ee4f82faa55356a46eb
+    - name: slime_paper_Frame_24
+      frameIndex: 24
+      cellRect:
+        x: 5
+        y: 3
+        width: 21
+        height: 26
+      spriteId: 13ceb64a461f22c439dda227e5739b95
+    - name: slime_paper_Frame_27
+      frameIndex: 27
+      cellRect:
+        x: 6
+        y: 2
+        width: 19
+        height: 28
+      spriteId: 114676e8646786b479909a224fba1432
+    - name: slime_paper_Frame_28
+      frameIndex: 28
+      cellRect:
+        x: 7
+        y: 1
+        width: 17
+        height: 30
+      spriteId: 2ed6f5ee93bd1404dbbac2c5c540d254
+    - name: slime_paper_Frame_29
+      frameIndex: 29
+      cellRect:
+        x: 8
+        y: 1
+        width: 17
+        height: 30
+      spriteId: 4cfb62dae3d2f39478e9be465150f93d
+    - name: slime_paper_Frame_39
+      frameIndex: 39
+      cellRect:
+        x: 7
+        y: 3
+        width: 18
+        height: 26
+      spriteId: c8c0c81b647d1eb47b1d3cde283f4576
+    - name: slime_paper_Frame_40
+      frameIndex: 40
+      cellRect:
+        x: 9
+        y: 3
+        width: 15
+        height: 26
+      spriteId: 22fadcb12c07f094bbfe279e43f6f571
+    - name: slime_paper_Frame_41
+      frameIndex: 41
+      cellRect:
+        x: 12
+        y: 3
+        width: 10
+        height: 26
+      spriteId: e3774180ff61de848a5c60307fdf1c7c
+    - name: slime_paper_Frame_42
+      frameIndex: 42
+      cellRect:
+        x: 14
+        y: 3
+        width: 7
+        height: 26
+      spriteId: 8de1967bba7b28c4e83479e83adec2a4
+    - name: slime_paper_Frame_43
+      frameIndex: 43
+      cellRect:
+        x: 14
+        y: 3
+        width: 8
+        height: 26
+      spriteId: 7284d4d1412f5954d9746e7d9a6679af
+    - name: slime_paper_Frame_44
+      frameIndex: 44
+      cellRect:
+        x: 13
+        y: 3
+        width: 8
+        height: 26
+      spriteId: 7093a43b9e1c9ff4881e47cfc5ace9c3
+    - name: slime_paper_Frame_45
+      frameIndex: 45
+      cellRect:
+        x: 13
+        y: 3
+        width: 7
+        height: 26
+      spriteId: b93abc9d19a917944868d3398ad15c23
+    - name: slime_paper_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 3
+        y: 3
+        width: 25
+        height: 24
+      spriteId: 785e3e3152a883845a2646aa2d576a7a
+    - name: slime_paper_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 4
+        y: 3
+        width: 23
+        height: 26
+      spriteId: 26325d7a76f7bb54f8119544a3cf6a38
+    - name: slime_paper_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 3
+        y: 3
+        width: 25
+        height: 24
+      spriteId: 40d103051ba5f9e41a98a82ed5d6ec90
+    - name: slime_paper_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 2
+        y: 3
+        width: 27
+        height: 22
+      spriteId: 4de24ada22e230e48b32205417f9399b
+    - name: slime_paper_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 3
+        y: 3
+        width: 25
+        height: 24
+      spriteId: 116407095ba11d141accb1f164f51162
+    - name: slime_paper_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 4
+        y: 3
+        width: 23
+        height: 26
+      spriteId: df94cbcc61982f241a9042a3dc5026ab
+    - name: slime_paper_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 3
+        y: 3
+        width: 25
+        height: 24
+      spriteId: 26e63d13a79579c4789c749cf4c70f7e
+    - name: slime_paper_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 2
+        y: 3
+        width: 27
+        height: 22
+      spriteId: 5efa68dde2e77d2408a28edbb6577e92
+    - name: slime_paper_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 3
+        y: 3
+        width: 25
+        height: 24
+      spriteId: 2dd407c13b82aa74983f26fc3b4e3dfd
+    - name: slime_paper_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 4
+        y: 3
+        width: 23
+        height: 26
+      spriteId: ed5f9390ab2d2e54da5f779f165b4cc4
+    - name: slime_paper_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 3
+        y: 3
+        width: 25
+        height: 24
+      spriteId: 95d07bce40f4b3246b308a8a064776c6
+    - name: slime_paper_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 2
+        y: 3
+        width: 27
+        height: 22
+      spriteId: 38e7fcb5b796398458fd0b16d829bf22
+    - name: slime_paper_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 3
+        y: 3
+        width: 25
+        height: 24
+      spriteId: ed65a7df534ac7241a13e03c41c640bd
+    - name: slime_paper_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 4
+        y: 3
+        width: 23
+        height: 26
+      spriteId: 8ae71e34b663d0d4da01b65f065575a6
+    - name: slime_paper_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 3
+        y: 3
+        width: 25
+        height: 24
+      spriteId: e900cced91452474d8641337c33f26b1
+    - name: slime_paper_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 2
+        y: 3
+        width: 27
+        height: 22
+      spriteId: 244efb009ed7a5441b5082ac2e4c8a0e
+    - name: slime_paper_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: 3
+        y: 3
+        width: 25
+        height: 24
+      spriteId: e340622d97a31514685c2df4dbf179f3
+    - name: slime_paper_Frame_20
+      frameIndex: 20
+      cellRect:
+        x: 4
+        y: 3
+        width: 23
+        height: 26
+      spriteId: 84ba15106ad958445abc7a9d8568b16e
+    - name: slime_paper_Frame_23
+      frameIndex: 23
+      cellRect:
+        x: 6
+        y: 3
+        width: 20
+        height: 26
+      spriteId: e72aa2383a37b7b4ca31556ac583124d
+    - name: slime_paper_Frame_25
+      frameIndex: 25
+      cellRect:
+        x: 6
+        y: 3
+        width: 20
+        height: 26
+      spriteId: 5c41ebd35b1f6cc47be60088357d3356
+    - name: slime_paper_Frame_26
+      frameIndex: 26
+      cellRect:
+        x: 4
+        y: 3
+        width: 23
+        height: 26
+      spriteId: 10de171a4aff60341b9c3ff4030bf3a6
+    - name: slime_paper_Frame_30
+      frameIndex: 30
+      cellRect:
+        x: 7
+        y: 1
+        width: 17
+        height: 30
+      spriteId: 5f87a44d9b59dfe459cffc031fa23c00
+    - name: slime_paper_Frame_31
+      frameIndex: 31
+      cellRect:
+        x: 8
+        y: 1
+        width: 17
+        height: 30
+      spriteId: d4f9b097bdf30f147b1c255c8529ee64
+    - name: slime_paper_Frame_32
+      frameIndex: 32
+      cellRect:
+        x: 7
+        y: 1
+        width: 17
+        height: 30
+      spriteId: d5560bc67ef406b448f3454557044422
+    - name: slime_paper_Frame_33
+      frameIndex: 33
+      cellRect:
+        x: 8
+        y: 1
+        width: 17
+        height: 30
+      spriteId: b2b0e600d94f9634c93caa986d7721f1
+    - name: slime_paper_Frame_34
+      frameIndex: 34
+      cellRect:
+        x: 7
+        y: 1
+        width: 17
+        height: 30
+      spriteId: 397dfe6c54194e44aa179ae4bf028929
+    - name: slime_paper_Frame_35
+      frameIndex: 35
+      cellRect:
+        x: 8
+        y: 1
+        width: 17
+        height: 30
+      spriteId: 69691c76a105fd34583601e08d3662df
+    - name: slime_paper_Frame_36
+      frameIndex: 36
+      cellRect:
+        x: 6
+        y: 2
+        width: 19
+        height: 28
+      spriteId: b46047c461e49dc44a79f99ee208bafb
+    - name: slime_paper_Frame_37
+      frameIndex: 37
+      cellRect:
+        x: 4
+        y: 3
+        width: 23
+        height: 26
+      spriteId: 927b5860948879d49aa976c8b4f7f7fa
+    - name: slime_paper_Frame_38
+      frameIndex: 38
+      cellRect:
+        x: 4
+        y: 3
+        width: 23
+        height: 26
+      spriteId: f4923b00b9ba1724fb09477ac8219c0f
+    - name: slime_paper_Frame_46
+      frameIndex: 46
+      cellRect:
+        x: 14
+        y: 3
+        width: 7
+        height: 26
+      spriteId: bf65c51b1fc18574994257de091e6661
+    - name: slime_paper_Frame_47
+      frameIndex: 47
+      cellRect:
+        x: 12
+        y: 3
+        width: 10
+        height: 26
+      spriteId: b0342172484e8ef44add1fba1ca1f93b
+    - name: slime_paper_Frame_48
+      frameIndex: 48
+      cellRect:
+        x: 9
+        y: 3
+        width: 15
+        height: 26
+      spriteId: 3bfc9994d59929a40b09636697cc9495
+    - name: slime_paper_Frame_49
+      frameIndex: 49
+      cellRect:
+        x: 7
+        y: 3
+        width: 18
+        height: 26
+      spriteId: b4e93d6cb1c33e84d913c773cedcb4e3
+    - name: slime_paper_Frame_50
+      frameIndex: 50
+      cellRect:
+        x: 4
+        y: 3
+        width: 23
+        height: 26
+      spriteId: d03c9788e44550f49ad09336b4e3f9f8
+    linkedCells: []
+    parentIndex: -1
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Android
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: iPhone
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: WebGL
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 32, y: 32}

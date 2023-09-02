@@ -1,4 +1,4 @@
-using FMODUnity;
+using Aarthificial.Typewriter.Entries;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +17,7 @@ internal static class AnimationState {
 }
 
 internal enum SlimeFormId {
-    Normal, Attack, Defend, Heal
+	Normal, Attack, Defend, Heal
 }
 
 internal class SlimeForm {
@@ -27,26 +27,26 @@ internal class SlimeForm {
 
 	internal float maxSpeed;
 	internal float frictionSpeed;
-    internal float accelerationRate;
-    internal float deccelerationRate;
+	internal float accelerationRate;
+	internal float deccelerationRate;
 
-    internal SlimeForm(SlimeFormId id, string key, Animator animator, float maxSpeed, float frictionSpeed, float accelerationRate, float deccelerationRate) {
+	internal SlimeForm(SlimeFormId id, string key, Animator animator, float maxSpeed, float frictionSpeed, float accelerationRate, float deccelerationRate) {
 		this.id = id;
 		this.key = key;
 		this.animator = animator;
 
-        this.maxSpeed = maxSpeed;
-        this.frictionSpeed = frictionSpeed;
-        this.accelerationRate = accelerationRate;
-        this.deccelerationRate = deccelerationRate;
-    }
+		this.maxSpeed = maxSpeed;
+		this.frictionSpeed = frictionSpeed;
+		this.accelerationRate = accelerationRate;
+		this.deccelerationRate = deccelerationRate;
+	}
 }
 
-public class Player : MonoBehaviour {
+public class Player : Speaker {
 	private SlimeForm nextForm;
 	private SlimeForm currentForm;
 
-    internal Dictionary<string, SlimeForm> SlimeCatalogue { get; private set; }
+	internal Dictionary<string, SlimeForm> SlimeCatalogue { get; private set; }
 
 	[Header("Animation")]
 	[SerializeField] private Animator normalAnimator;
@@ -66,12 +66,6 @@ public class Player : MonoBehaviour {
 	private Vector2 inputMove;
 	private float lastDoActionPressed;
 	public bool isDoActionPressed { get; private set; }
-
-	[Header("SFX")]
-	[SerializeField] private EventReference moveSound;
-	[SerializeField] private EventReference twistSound;
-	[SerializeField] private EventReference hurtSound;
-
     private void Awake() {
 		this.rb = this.GetComponent<Rigidbody2D>();
 
@@ -79,19 +73,19 @@ public class Player : MonoBehaviour {
 			{ "Normal", new SlimeForm(
 				id: SlimeFormId.Normal,
 				key: "Normal",
-                animator: normalAnimator,
+				animator: normalAnimator,
 				maxSpeed: 11f,
-                frictionSpeed: 0.2f,
-                accelerationRate: 2.5f,
-                deccelerationRate: 5f
-            ) },
+				frictionSpeed: 0.2f,
+				accelerationRate: 2.5f,
+				deccelerationRate: 5f
+			) },
 			{ "Heal", new SlimeForm(
 				id: SlimeFormId.Heal,
 				key: "Heal",
 				animator: healAnimator,
 				maxSpeed: 11f,
-                frictionSpeed: 0.2f,
-                accelerationRate: 2.5f,
+				frictionSpeed: 0.2f,
+				accelerationRate: 2.5f,
 				deccelerationRate: 5f
 			) },
 			{ "Defend", new SlimeForm(
@@ -99,8 +93,8 @@ public class Player : MonoBehaviour {
 				key: "Defend",
 				animator: defendAnimator,
 				maxSpeed: 11f,
-                frictionSpeed: 0.2f,
-                accelerationRate: 2.5f,
+				frictionSpeed: 0.2f,
+				accelerationRate: 2.5f,
 				deccelerationRate: 5f
 			) },
 			{ "Attack", new SlimeForm(
@@ -108,15 +102,26 @@ public class Player : MonoBehaviour {
 				key: "Attack",
 				animator: attackAnimator,
 				maxSpeed: 11f,
-                frictionSpeed: 0.2f,
-                accelerationRate: 2.5f,
+				frictionSpeed: 0.2f,
+				accelerationRate: 2.5f,
 				deccelerationRate: 5f
 			) },
 		};
 		this.currentForm = this.SlimeCatalogue["Normal"];
-    }
+	}
+
+	private void Start() {
+        //this.SpawnChatBubble("Testing...");
+
+        FactEntry fact_moveCount = TypewriterEvents.instance.fact_moveCount.GetEntry<FactEntry>();
+		//fact_moveCount.
+	}
 
 	void Update() {
+		if (GameManager.instance.isGameOver) {
+			return;
+		}
+
 		// Update Timers
 		this.lastDoActionPressed -= Time.deltaTime;
 
@@ -128,19 +133,27 @@ public class Player : MonoBehaviour {
 		}
 		else if (this.inputMove.x < 0) {
 			SetAnimation(AnimationState.MoveRight);
-		}
-		else if (this.inputMove.x > 0) {
+            TypewriterEvents.instance.UpdateFact(FactInteger.MoveCount);
+        }
+        else if (this.inputMove.x > 0) {
 			SetAnimation(AnimationState.MoveLeft);
-		}
-		else if (this.inputMove.y > 0) {
+            TypewriterEvents.instance.UpdateFact(FactInteger.MoveCount);
+        }
+        else if (this.inputMove.y > 0) {
 			SetAnimation(AnimationState.MoveUp);
-		}
-		else if (this.inputMove.y < 0) {
+            TypewriterEvents.instance.UpdateFact(FactInteger.MoveCount);
+        }
+        else if (this.inputMove.y < 0) {
 			SetAnimation(AnimationState.MoveDown);
-		}
-	}
+            TypewriterEvents.instance.UpdateFact(FactInteger.MoveCount);
+        }
+    }
 
 	private void FixedUpdate() {
+		if (GameManager.instance.isGameOver) {
+			return;
+		}
+
 		this.UpdateMovement();
 	}
 
@@ -171,25 +184,25 @@ public class Player : MonoBehaviour {
 	void UpdateMovement() {
 		Vector2 speed_target = new Vector2(this.inputMove.x * this.currentForm.maxSpeed, this.inputMove.y * this.currentForm.maxSpeed);
 		Vector2 speed_delta = speed_target - this.rb.velocity;
-        
+		
 		bool is_accelerating = ((Mathf.Abs(speed_target.x) > 0.01f) || (Mathf.Abs(speed_target.y) > 0.01f));
-        float accelerationRate = (is_accelerating ? this.currentForm.accelerationRate : this.currentForm.deccelerationRate);
+		float accelerationRate = (is_accelerating ? this.currentForm.accelerationRate : this.currentForm.deccelerationRate);
 		Vector2 velocity_force = speed_delta * accelerationRate;
 
 		this.rb.AddForce(velocity_force, ForceMode2D.Force);
 	}
 
 	void SetForm(string newForm) {
-		if (this.isTwisting || (newForm == this.currentForm.key)) {
+		if ((GameManager.instance.isGameOver) || this.isTwisting || (newForm == this.currentForm.key)) {
 			return;
-        }
+		}
 
-        this.nextForm = this.SlimeCatalogue[newForm];
-        if (this.nextForm == null) {
-            throw new System.Exception("Unknown form '" + newForm + "'");
-        }
+		this.nextForm = this.SlimeCatalogue[newForm];
+		if (this.nextForm == null) {
+			throw new System.Exception("Unknown form '" + newForm + "'");
+		}
 
-        this.SetAnimation(AnimationState.TwistIn);
+		this.SetAnimation(AnimationState.TwistIn);
 		this.isTwisting = true;
 		this.isAnimatingOneshot = true;
 	}
@@ -206,15 +219,16 @@ public class Player : MonoBehaviour {
 	internal void AnimationFinished(string animationName) {
 		switch (animationName) {
 			case AnimationState.TwistIn:
-                this.currentForm.animator.gameObject.SetActive(false);
+				this.currentForm.animator.gameObject.SetActive(false);
 				this.currentForm = this.nextForm;
-                this.currentForm.animator.gameObject.SetActive(true);
+				this.currentForm.animator.gameObject.SetActive(true);
 				this.SetAnimation(AnimationState.TwistOut, true);
 				break;
 
 			case AnimationState.TwistOut:
 				this.isAnimatingOneshot = false;
 				this.isTwisting = false;
+				TypewriterEvents.instance.UpdateFact(FactInteger.TwistCount);
 				break;
 
 			default:
@@ -224,25 +238,25 @@ public class Player : MonoBehaviour {
 	}
 
 	internal void AnimationStart(string animationName) {
-        switch (animationName) {
-            case AnimationState.MoveUp:
-            case AnimationState.MoveDown:
-            case AnimationState.MoveLeft:
-            case AnimationState.MoveRight:
-                GameManager.instance.PlayOneShot(this.moveSound, this.gameObject.transform.position);
-                break;
+		switch (animationName) {
+			case AnimationState.MoveUp:
+			case AnimationState.MoveDown:
+			case AnimationState.MoveLeft:
+			case AnimationState.MoveRight:
+				AudioManager.instance.PlayOneShot(FmodEvents.instance.moveSound, this.gameObject.transform.position);
+				break;
 
-            case AnimationState.TwistIn:
-                GameManager.instance.PlayOneShot(this.twistSound, this.gameObject.transform.position);
-                break;
+			case AnimationState.TwistIn:
+				AudioManager.instance.PlayOneShot(FmodEvents.instance.twistSound, this.gameObject.transform.position);
+				break;
 
-            case AnimationState.Hurt:
-                GameManager.instance.PlayOneShot(this.hurtSound, this.gameObject.transform.position);
-                break;
+			case AnimationState.Hurt:
+				AudioManager.instance.PlayOneShot(FmodEvents.instance.hurtSound, this.gameObject.transform.position);
+				break;
 
-            default:
-                throw new System.Exception("Unknown animation event for '" + animationName + "'");
+			default:
+				throw new System.Exception("Unknown animation event for '" + animationName + "'");
 
-        }
-    }
+		}
+	}
 }
