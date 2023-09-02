@@ -23,6 +23,11 @@ public class DialogueEntry : RuleEntry {
   /// Whether this line should end with a choice.
   /// </summary>
   public bool IsChoice;
+  
+  /// <summary>
+  /// If the character should be locked in place or not.
+  /// </summary>
+  public bool IsPlayerLocked;
 
   /// <summary>
   /// The dialogue line.

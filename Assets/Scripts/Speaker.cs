@@ -10,7 +10,9 @@ public class Speaker : MonoBehaviour {
 
 	[SerializeField] private EntryReference speakerReference;
 
-	internal MyContext typewriterContext = new MyContext();
+	[SerializeField] internal string displayName;
+
+    internal MyContext typewriterContext = new MyContext();
 
 	internal void SpawnChatBubble(string text) {
 		//DialogManager.instance.SpawnChatBubble(this, text);

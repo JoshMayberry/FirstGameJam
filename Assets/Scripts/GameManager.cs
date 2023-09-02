@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour {
 
     public void Start() {
         this.isGameOver = false;
+        DialogManager.instance.TriggerChat(TypewriterEvents.instance.event_onLevelStart, this.player, true);
     }
 
     public void ChangeLevelIntegrity(int amount) {

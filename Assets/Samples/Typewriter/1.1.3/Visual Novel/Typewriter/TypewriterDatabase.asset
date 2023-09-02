@@ -13,8 +13,5 @@ MonoBehaviour:
   m_Name: TypewriterDatabase
   m_EditorClassIdentifier: 
   Tables:
-  - {fileID: 11400000, guid: 29074410f4c090e46941efb646ccdec2, type: 2}
   - {fileID: 11400000, guid: 9654941c61f310246b832e7424ce7a45, type: 2}
-  - {fileID: 11400000, guid: 625c4d53298be8a4d9de958b5272383d, type: 2}
-  - {fileID: 11400000, guid: f5551e824aa3aea4eb77408c43bdbff0, type: 2}
   - {fileID: 11400000, guid: 325a7582f2db2ff4895cbe0bcb1039f7, type: 2}

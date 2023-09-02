@@ -8,16 +8,16 @@ using Aarthificial.Typewriter.Tools;
 using Aarthificial.Typewriter.Blackboards;
 using Aarthificial.Typewriter.Entries;
 
-public enum FactBoolean {
-	None,
-	NearSkeleton1
-}
+//public enum FactBoolean {
+//	None,
+//	NearSkeleton1
+//}
 
-public enum FactInteger {
-	None,
-	MoveCount,
-    TwistCount
-}
+//public enum FactInteger {
+//	None,
+//	MoveCount,
+//    TwistCount
+//}
 
 public enum SpeakerType {
     Skeleton = 0,
@@ -61,11 +61,11 @@ public class TypewriterEvents : MonoBehaviour {
 	[field: SerializeField] public EntryReference event_onLevelStart { get; private set; }
 	[field: SerializeField] public EntryReference event_onTellPlayerToMove { get; private set; }
 
-	[field: Header("Triggers")]
-	[field: SerializeField] public EntryReference trigger_updateNearSkeleton1_true { get; private set; }
-	[field: SerializeField] public EntryReference trigger_updateNearSkeleton1_false { get; private set; }
-	[field: SerializeField] public EntryReference trigger_updateMoveCount { get; private set; }
-	[field: SerializeField] public EntryReference trigger_updateTwistCount { get; private set; }
+	//[field: Header("Triggers")]
+	//[field: SerializeField] public EntryReference trigger_updateNearSkeleton1_true { get; private set; }
+	//[field: SerializeField] public EntryReference trigger_updateNearSkeleton1_false { get; private set; }
+	//[field: SerializeField] public EntryReference trigger_updateMoveCount { get; private set; }
+	//[field: SerializeField] public EntryReference trigger_updateTwistCount { get; private set; }
 
 	[SerializeField] private float throttle_updateMoveCount = 1f;
 	private float lastUpdateMoveCount;
@@ -83,44 +83,74 @@ public class TypewriterEvents : MonoBehaviour {
 		this.lastUpdateMoveCount -= Time.deltaTime;
 	}
 
-	public void UpdateFact(FactBoolean factName, bool state = true) {
-        EntryReference factReference;
-		switch (factName) {
-			case FactBoolean.NearSkeleton1:
-				factReference = (state ? this.trigger_updateNearSkeleton1_true : this.trigger_updateNearSkeleton1_false);
-				break;
+	//public void UpdateFact(FactBoolean factName, bool state = true) {
+ //       EntryReference factReference;
+	//	switch (factName) {
+	//		case FactBoolean.NearSkeleton1:
+	//			factReference = (state ? this.trigger_updateNearSkeleton1_true : this.trigger_updateNearSkeleton1_false);
+	//			break;
 
-			default:
-				throw new System.Exception("Unknown boolean fact '" + factName + "'");
+	//		default:
+	//			throw new System.Exception("Unknown boolean fact '" + factName + "'");
+	//	}
+
+	//	GameManager.instance.player.typewriterContext.TryInvoke(factReference);
+	//}
+
+	//public void UpdateFact(FactInteger factName, bool increment = true) {
+	//	EntryReference factReference;
+	//	switch (factName) {
+	//		case FactInteger.MoveCount:
+	//			if (this.lastUpdateMoveCount > 0.01f) {
+	//				return;
+	//			}
+
+	//			this.lastUpdateMoveCount = this.throttle_updateMoveCount;
+	//			factReference = this.trigger_updateMoveCount;
+	//			break;
+
+	//		case FactInteger.TwistCount:
+	//			factReference = this.trigger_updateTwistCount;
+	//			break;
+
+	//		default:
+	//			throw new System.Exception("Unknown integer fact '" + factName + "'");
+	//	}
+
+	//	GameManager.instance.player.typewriterContext.TryInvoke(factReference);
+ //   }
+
+    public int GetFact(MyContext context, EntryReference factReference) {
+        factReference.TryGetEntry(out FactEntry factEntry);
+        return context.Get(factEntry);
+    }
+
+    public void SetFact(MyContext context, EntryReference factReference, int value, bool isSilent=false) {
+        factReference.TryGetEntry(out FactEntry factEntry);
+        context.Set(factEntry, value);
+
+		if (!isSilent) {
+			TypewriterDatabase.Instance.MarkChange();
 		}
+    }
+    public void IncrementFact(MyContext context, EntryReference factReference, int value, bool isSilent = false) {
+		if (factReference.ID == this.fact_moveCount.ID) {
+            if (this.lastUpdateMoveCount > 0.01f) {
+                return;
+            }
 
-		GameManager.instance.player.typewriterContext.TryInvoke(factReference);
-	}
+            this.lastUpdateMoveCount = this.throttle_updateMoveCount;
+        }
 
-	public void UpdateFact(FactInteger factName, bool increment = true) {
-		EntryReference factReference;
-		switch (factName) {
-			case FactInteger.MoveCount:
-				if (this.lastUpdateMoveCount > 0.01f) {
-					return;
-				}
+		factReference.TryGetEntry(out FactEntry factEntry);
+        context.Add(factEntry, value);
 
-				this.lastUpdateMoveCount = this.throttle_updateMoveCount;
-				factReference = this.trigger_updateMoveCount;
-				break;
+        if (!isSilent) {
+            TypewriterDatabase.Instance.MarkChange();
+        }
+    }
 
-			case FactInteger.TwistCount:
-				factReference = this.trigger_updateTwistCount;
-				break;
-
-			default:
-				throw new System.Exception("Unknown integer fact '" + factName + "'");
-		}
-
-		GameManager.instance.player.typewriterContext.TryInvoke(factReference);
-	}
-
-	public Speaker LookupSpeaker(DialogueEntry currentEntry) {
+    public Speaker LookupSpeaker(DialogueEntry currentEntry) {
 		return this.speakerLookup.Speakers[currentEntry.Speaker.ID];
 	}
 }

@@ -7,75 +7,102 @@ using Aarthificial.Typewriter.References;
 using Aarthificial.Typewriter.Tools;
 using System.Xml;
 using Aarthificial.Typewriter.Entries;
+using Aarthificial.Typewriter.Blackboards;
 
 public class DialogManager : MonoBehaviour {
-    [SerializeField] internal Sprite[] chatBubbleSprite;
-    [SerializeField] internal Sprite[] chatButtonSprite;
-    //[SerializeField] private ChatBubble chatBubblePrefab;
+	[SerializeField] internal Sprite[] chatBubbleSprite;
+	[SerializeField] internal Sprite[] chatButtonSprite;
+	[SerializeField] private ChatBubble chatBubblePrefab;
 
-    //private List<ChatBubble> activeChatBubbles;
-    //private List<ChatBubble> inactiveChatBubbles;
+	[SerializeField] private List<ChatBubble> activeChatBubbles;
+	[SerializeField] private List<ChatBubble> inactiveChatBubbles;
 
-    private Dictionary<int, GameObject> speakerDictionary;
+	[SerializeField] private ChatBubble currentChat;
 
-	internal bool isTalkPressed { get; private set; }
+	internal IBlackboard globalBlackboard;
 
-    public static DialogManager instance { get; private set; }
-    private void Awake() {
-        if (instance != null) {
-            Debug.LogError("Found more than one Dialog Manager in the scene.");
-        }
 
-        instance = this;
+	internal bool isTalkPressed;
+	internal bool isPlayerLocked;
+	internal bool isChatInProgress => currentChat != null;
 
-        //this.BuildSpeakerDictionary();
 
-        //this.activeChatBubbles = new List<ChatBubble>();
-        //this.inactiveChatBubbles = new List<ChatBubble>();
-    }
+	public static DialogManager instance { get; private set; }
+	private void Awake() {
+		if (instance != null) {
+			Debug.LogError("Found more than one Dialog Manager in the scene.");
+		}
 
-    private void Update() {
-        this.isTalkPressed = Input.GetKeyDown(KeyCode.E);
-    }
+		instance = this;
 
-    //void BuildSpeakerDictionary() {
-    //    speakerDictionary = new Dictionary<int, GameObject>();
-    //    foreach (var entry in speakerLookup.entries) {
-    //        speakerDictionary.Add(entry.key, entry.value);
-    //    }
-    //}
+		this.activeChatBubbles = new List<ChatBubble>();
+		this.inactiveChatBubbles = new List<ChatBubble>();
+	}
 
-    //public GameObject GetSpeaker(EntryReference speakerReference) {
-    //    GameObject speaker;
-    //    if (speakerDictionary.TryGetValue(speakerReference.ID, out speaker)) {
-    //        return speaker;
-    //    }
+	private void Start() {
+		GameManager.instance.player.typewriterContext.TryGetBlackboard(1388552, out this.globalBlackboard);
 
-    //    throw new System.Exception("Unknown speaker id '" + speakerReference.ID + "'");
-    //}
+		// Wipe the global backboard for this playthrough (will make it so things do not persist)
+		// I'm having trouble with the context blackboards- so let's just use the global for everything?
+		this.globalBlackboard.Clear();
+	}
 
-    //public ChatBubble SpawnChatBubble() {
-    //    // Try to reuse an inactive chatBubble, or create a new one
-    //    ChatBubble chatBubble;
-    //    if (this.inactiveChatBubbles.Count > 0) {
-    //        chatBubble = this.inactiveChatBubbles[this.inactiveChatBubbles.Count - 1];
-    //        this.inactiveChatBubbles.RemoveAt(this.inactiveChatBubbles.Count - 1);
-    //    }
-    //    else {
-    //        chatBubble = Instantiate(this.chatBubblePrefab, this.transform.position, this.transform.rotation);
-    //    }
+	private void Update() {
+		this.isTalkPressed = Input.GetKeyDown(KeyCode.E);
+	}
 
-    //    chatBubble.gameObject.SetActive(true);
-    //    this.activeChatBubbles.Add(chatBubble);
+	public void SetCurrentChat(ChatBubble chatBubble) {
+		if (this.currentChat != null) {
+			TypewriterDatabase.Instance.RemoveListener(this.currentChat.HandleTypewriterEvent);
+		}
 
-    //    return chatBubble;
-    //}
+		this.currentChat = chatBubble;
+		TypewriterDatabase.Instance.AddListener(this.currentChat.HandleTypewriterEvent);
+	}
 
-    //public void TriggerEvent(EntryReference myEvent, ChatBubble chatBubble = null) {
-    //    if (chatBubble == null) {
-    //        chatBubble = this.SpawnChatBubble();
-    //    }
+	public void CurrentChatFinished(ChatBubble chatBubble) {
+		TypewriterDatabase.Instance.RemoveListener(this.currentChat.HandleTypewriterEvent);
+		this.currentChat = null;
+		//TypewriterDatabase.Instance.MarkChange(); // Allow icons to reappear
+	}
 
-    //    //chatBubble.TriggerEvent(myEvent);
-    //}
+	public void TriggerChat(EntryReference eventReference, Speaker firstSpeaker, bool autoStart = true) {
+		ChatBubble chatBubble = this.SpawnChatBubble(firstSpeaker);
+		chatBubble.SetEvent(eventReference);
+
+		if (autoStart) {
+			chatBubble.TriggerEvent();
+		}
+	}
+
+	public ChatBubble SpawnChatBubble(Speaker firstSpeaker) {
+		// Try to reuse an inactive chatBubble, or create a new one
+		ChatBubble chatBubble;
+		if (this.inactiveChatBubbles.Count > 0) {
+			chatBubble = this.inactiveChatBubbles[this.inactiveChatBubbles.Count - 1];
+			this.inactiveChatBubbles.RemoveAt(this.inactiveChatBubbles.Count - 1);
+
+			//chatBubble.DoReset(bubblePosition);
+			this.activeChatBubbles.Add(chatBubble);
+		}
+		else {
+			chatBubble = Instantiate(this.chatBubblePrefab, firstSpeaker.chatBubblePosition.position, this.transform.rotation);
+		}
+
+		chatBubble.SetInitialState(firstSpeaker);
+		chatBubble.gameObject.SetActive(true);
+
+		return chatBubble;
+	}
+
+	internal void SetBubbleActive(ChatBubble chatBubble, bool state = true) {
+		if (state) {
+			this.inactiveChatBubbles.Remove(chatBubble);
+			this.activeChatBubbles.Add(chatBubble);
+			return;
+		}
+
+		this.activeChatBubbles.Remove(chatBubble);
+		this.inactiveChatBubbles.Add(chatBubble);
+	}
 }

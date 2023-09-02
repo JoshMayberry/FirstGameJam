@@ -118,7 +118,7 @@ public class Player : Speaker {
 	}
 
 	void Update() {
-		if (GameManager.instance.isGameOver) {
+		if (GameManager.instance.isGameOver || DialogManager.instance.isPlayerLocked) {
 			return;
 		}
 
@@ -133,24 +133,24 @@ public class Player : Speaker {
 		}
 		else if (this.inputMove.x < 0) {
 			SetAnimation(AnimationState.MoveRight);
-            TypewriterEvents.instance.UpdateFact(FactInteger.MoveCount);
+            TypewriterEvents.instance.IncrementFact(this.typewriterContext, TypewriterEvents.instance.fact_moveCount, 1);
         }
         else if (this.inputMove.x > 0) {
 			SetAnimation(AnimationState.MoveLeft);
-            TypewriterEvents.instance.UpdateFact(FactInteger.MoveCount);
+            TypewriterEvents.instance.IncrementFact(this.typewriterContext, TypewriterEvents.instance.fact_moveCount, 1);
         }
         else if (this.inputMove.y > 0) {
 			SetAnimation(AnimationState.MoveUp);
-            TypewriterEvents.instance.UpdateFact(FactInteger.MoveCount);
+            TypewriterEvents.instance.IncrementFact(this.typewriterContext, TypewriterEvents.instance.fact_moveCount, 1);
         }
         else if (this.inputMove.y < 0) {
 			SetAnimation(AnimationState.MoveDown);
-            TypewriterEvents.instance.UpdateFact(FactInteger.MoveCount);
+            TypewriterEvents.instance.IncrementFact(this.typewriterContext, TypewriterEvents.instance.fact_moveCount, 1);
         }
     }
 
 	private void FixedUpdate() {
-		if (GameManager.instance.isGameOver) {
+		if (GameManager.instance.isGameOver || DialogManager.instance.isPlayerLocked) {
 			return;
 		}
 
@@ -193,7 +193,7 @@ public class Player : Speaker {
 	}
 
 	void SetForm(string newForm) {
-		if ((GameManager.instance.isGameOver) || this.isTwisting || (newForm == this.currentForm.key)) {
+		if ((GameManager.instance.isGameOver) || DialogManager.instance.isPlayerLocked || this.isTwisting || (newForm == this.currentForm.key)) {
 			return;
 		}
 
@@ -228,8 +228,8 @@ public class Player : Speaker {
 			case AnimationState.TwistOut:
 				this.isAnimatingOneshot = false;
 				this.isTwisting = false;
-				TypewriterEvents.instance.UpdateFact(FactInteger.TwistCount);
-				break;
+				TypewriterEvents.instance.IncrementFact(this.typewriterContext, TypewriterEvents.instance.fact_twistCount, 1);
+                break;
 
 			default:
 				throw new System.Exception("Unknown animation event for '" + animationName + "'");
