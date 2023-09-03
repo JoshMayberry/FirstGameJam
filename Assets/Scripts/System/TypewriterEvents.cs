@@ -35,6 +35,10 @@ public class TypewriterEvents : MonoBehaviour {
 	[field: SerializeField] public EntryReference fact_moveCount { get; private set; }
     [field: SerializeField] public EntryReference fact_twistCount { get; private set; }
     [field: SerializeField] public EntryReference fact_actCount { get; private set; }
+    [field: SerializeField] public EntryReference fact_isWebCut { get; private set; }
+    [field: SerializeField] public EntryReference fact_isKeyFound { get; private set; }
+    [field: SerializeField] public EntryReference fact_isDoorOpen { get; private set; }
+    [field: SerializeField] public EntryReference fact_playerHealth { get; private set; }
 
     [field: Header("Events")]
 	[field: SerializeField] public EntryReference event_nothing { get; private set; }

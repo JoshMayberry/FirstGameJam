@@ -1,0 +1,683 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d0878fa1be1f546a2a65661326a877, type: 3}
+  m_Name: TwistRock
+  m_EditorClassIdentifier: 
+  TableName: TwistRock
+  Rules:
+  - rid: 669309080621809910
+  - rid: 669309080621809911
+  - rid: 669309080621809912
+  - rid: 669309080621809913
+  - rid: 669309080621809914
+  - rid: 669309080621809915
+  - rid: 669309080621809918
+  - rid: 669309080621809919
+  - rid: 669309080621809920
+  - rid: 669309080621809921
+  - rid: 669309080621809922
+  - rid: 669309080621809923
+  - rid: 669309080621809924
+  - rid: 669309080621809925
+  - rid: 669309080621809926
+  - rid: 669309080621809927
+  Facts:
+  - rid: 669309080621809897
+  - rid: 669309080621809898
+  - rid: 669309080621809899
+  - rid: 669309080621809902
+  - rid: 669309080621809916
+  Events:
+  - rid: 669309080621809900
+  - rid: 669309080621809901
+  - rid: 669309080621809917
+  - rid: 669309080621809903
+  - rid: 669309080621809904
+  - rid: 669309080621809905
+  - rid: 669309080621809906
+  - rid: 669309080621809907
+  references:
+    version: 2
+    RefIds:
+    - rid: 669309080621809897
+      type: {class: SpeakerEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303264
+        Key: skeleton_5a
+        Scope:
+          InternalID: 0
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        DisplayName: This Skeleton
+    - rid: 669309080621809898
+      type: {class: SpeakerEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303265
+        Key: skeleton_5b
+        Scope:
+          InternalID: 0
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        DisplayName: That Skeleton
+    - rid: 669309080621809899
+      type: {class: FactEntry, ns: Aarthificial.Typewriter.Entries, asm: Aarthificial.Typewriter}
+      data:
+        ID: 303266
+        Key: player_health
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+    - rid: 669309080621809900
+      type: {class: EventEntry, ns: Aarthificial.Typewriter.Entries, asm: Aarthificial.Typewriter}
+      data:
+        ID: 303267
+        Key: on_teachRockTwist
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria:
+        - FactReference:
+            InternalID: 303269
+          Min: 1
+          Max: 1
+          Operation: 0
+        Modifications: []
+    - rid: 669309080621809901
+      type: {class: DecisionEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303268
+        Key: on_teachRockTwist_noDamage_noKey
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List:
+          - InternalID: 303267
+        Once: 0
+        Padding: 0
+        Criteria:
+        - FactReference:
+            InternalID: 303162
+          Min: 0
+          Max: 0
+          Operation: 0
+        - FactReference:
+            InternalID: 303281
+          Min: 0
+          Max: 0
+          Operation: 0
+        Modifications: []
+        cancelWhenLeavesArea: 1
+        areaFlag:
+          InternalID: 303269
+    - rid: 669309080621809902
+      type: {class: FactEntry, ns: Aarthificial.Typewriter.Entries, asm: Aarthificial.Typewriter}
+      data:
+        ID: 303269
+        Key: near_skeleton5
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+    - rid: 669309080621809903
+      type: {class: DecisionEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303270
+        Key: on_teachRockTwist_lowDamage_noKey
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria:
+        - FactReference:
+            InternalID: 303266
+          Min: 3
+          Max: 3
+          Operation: 0
+        - FactReference:
+            InternalID: 303162
+          Min: 0
+          Max: 0
+          Operation: 0
+        Modifications: []
+        cancelWhenLeavesArea: 1
+        areaFlag:
+          InternalID: 303269
+    - rid: 669309080621809904
+      type: {class: DecisionEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303271
+        Key: on_teachRockTwist_highDamage_noKey
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria:
+        - FactReference:
+            InternalID: 303266
+          Min: -2147483648
+          Max: 2
+          Operation: 3
+        - FactReference:
+            InternalID: 303162
+          Min: 0
+          Max: 0
+          Operation: 0
+        Modifications: []
+        cancelWhenLeavesArea: 1
+        areaFlag:
+          InternalID: 303269
+    - rid: 669309080621809905
+      type: {class: DecisionEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303272
+        Key: on_teachRockTwist_noDamage_hasKey
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria:
+        - FactReference:
+            InternalID: 303266
+          Min: 4
+          Max: 4
+          Operation: 0
+        - FactReference:
+            InternalID: 303162
+          Min: 1
+          Max: 1
+          Operation: 0
+        Modifications: []
+        cancelWhenLeavesArea: 1
+        areaFlag:
+          InternalID: 303269
+    - rid: 669309080621809906
+      type: {class: DecisionEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303273
+        Key: on_teachRockTwist_lowDamage_hasKey
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria:
+        - FactReference:
+            InternalID: 303266
+          Min: 3
+          Max: 3
+          Operation: 0
+        - FactReference:
+            InternalID: 303162
+          Min: 1
+          Max: 1
+          Operation: 0
+        Modifications: []
+        cancelWhenLeavesArea: 1
+        areaFlag:
+          InternalID: 303269
+    - rid: 669309080621809907
+      type: {class: DecisionEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303274
+        Key: on_teachRockTwist_highDamage_hasKey
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria:
+        - FactReference:
+            InternalID: 303266
+          Min: -2147483648
+          Max: 2
+          Operation: 3
+        - FactReference:
+            InternalID: 303162
+          Min: 1
+          Max: 1
+          Operation: 0
+        Modifications: []
+        cancelWhenLeavesArea: 1
+        areaFlag:
+          InternalID: 303269
+    - rid: 669309080621809910
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303275
+        Key: nono_1
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303268
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Hey, did you see those spikes? I heard they're super sharp!
+        _speaker:
+          InternalID: 303264
+    - rid: 669309080621809911
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303276
+        Key: nono_2
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303275
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Oh, yeah! I heard they can pierce through anything! Well, almost anything...
+        _speaker:
+          InternalID: 303265
+    - rid: 669309080621809912
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303277
+        Key: nono_3
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303276
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Right! I heard that rock-hard things can actually get past them without
+          a scratch.
+        _speaker:
+          InternalID: 303264
+    - rid: 669309080621809913
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303278
+        Key: nono_4
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303277
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: I wish I was made of rock. Then I could just walk past those spikes
+          without a care in the world!
+        _speaker:
+          InternalID: 303265
+    - rid: 669309080621809914
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303279
+        Key: nono_5
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303278
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications:
+        - FactReference:
+            InternalID: 303281
+          Value: 1
+          Operation: 0
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Yeah, but then you'd be a statue and not a skeleton, silly!
+        _speaker:
+          InternalID: 303264
+    - rid: 669309080621809915
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303280
+        Key: nono_6
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303279
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Very true. I wouldn't trade my bones for anything!
+        _speaker:
+          InternalID: 303265
+    - rid: 669309080621809916
+      type: {class: FactEntry, ns: Aarthificial.Typewriter.Entries, asm: Aarthificial.Typewriter}
+      data:
+        ID: 303281
+        Key: finished_nono
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+    - rid: 669309080621809917
+      type: {class: DecisionEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303282
+        Key: on_teachRockTwist_noDamage_noKey_2
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List:
+          - InternalID: 303267
+        Once: 0
+        Padding: 0
+        Criteria:
+        - FactReference:
+            InternalID: 303281
+          Min: 1
+          Max: 1
+          Operation: 0
+        - FactReference:
+            InternalID: 303162
+          Min: 0
+          Max: 0
+          Operation: 0
+        Modifications: []
+        cancelWhenLeavesArea: 1
+        areaFlag:
+          InternalID: 303269
+    - rid: 669309080621809918
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303283
+        Key: nono_1b
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303282
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: You know, I heard slimes can actually twist themselves into different
+          shapes. Even rock shapes!
+        _speaker:
+          InternalID: 303264
+    - rid: 669309080621809919
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303284
+        Key: nono_2b
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303283
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Really? That's intriguing! But wait, aren't they still made of goo?
+        _speaker:
+          InternalID: 303265
+    - rid: 669309080621809920
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303285
+        Key: nono_3b
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303284
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Yep! It's just their shape that changes, not the material. It's odd,
+          but it seems to work!
+        _speaker:
+          InternalID: 303264
+    - rid: 669309080621809921
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303286
+        Key: nono_4b
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303285
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: So, you're saying a slime could twist itself into a rock shape and
+          just roll past those spikes?
+        _speaker:
+          InternalID: 303265
+    - rid: 669309080621809922
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303287
+        Key: nono_5b
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303286
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Exactly! It's like the spikes can't tell the difference. It's almost
+          as if the spikes have...bad eyesight?
+        _speaker:
+          InternalID: 303264
+    - rid: 669309080621809923
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303288
+        Key: nono_6b
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303287
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Spikes with bad eyesight! Ha! That's a good one!
+        _speaker:
+          InternalID: 303265
+    - rid: 669309080621809924
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303289
+        Key: nono_7b
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303288
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Well, you get what I mean. It's weird how just a change in shape could
+          make them immune to the spikes.
+        _speaker:
+          InternalID: 303264
+    - rid: 669309080621809925
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303290
+        Key: nono_8b
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303289
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Yeah, it defies the laws of... well, whatever laws govern dungeon traps
+          and monsters!
+        _speaker:
+          InternalID: 303265
+    - rid: 669309080621809926
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303291
+        Key: nono_9b
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303290
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Nature? Physics? Video game logic?
+        _speaker:
+          InternalID: 303264
+    - rid: 669309080621809927
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303292
+        Key: nono_10b
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303291
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Probably that last one.
+        _speaker:
+          InternalID: 303265

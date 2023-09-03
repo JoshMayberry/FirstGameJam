@@ -16,6 +16,7 @@ public class SpiderWeb : MonoBehaviour {
                     miniMapIcon.gameObject.SetActive(false);
                     myRenderer.sprite = brokenWebSprite;
                     GameManager.instance.ChangeLevelIntegrity(-1);
+                    TypewriterEvents.instance.SetFact(GameManager.instance.player.typewriterContext, TypewriterEvents.instance.fact_isWebCut, 1);
                 }
                 break;
         }

@@ -18,7 +18,7 @@ public class DialogManager : MonoBehaviour {
 
     [Readonly] public bool isTalkPressed;
 	[Readonly] public bool isPlayerLocked;
-	internal bool isChatInProgress => currentChat != null;
+	internal bool isChatInProgress => (currentChat != null) && (currentChat.isActive);
 
 	public static DialogManager instance { get; private set; }
 	private void Awake() {

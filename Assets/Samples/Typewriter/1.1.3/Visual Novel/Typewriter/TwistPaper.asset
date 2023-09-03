@@ -81,7 +81,7 @@ MonoBehaviour:
         ID: 303198
         Key: on_teachTwistPaper
         Scope:
-          InternalID: 0
+          InternalID: 1388552
         Triggers:
           List: []
         Once: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
         ID: 303199
         Key: twistPaper_1
         Scope:
-          InternalID: 0
+          InternalID: 1388552
         Triggers:
           List:
           - InternalID: 303201
@@ -143,7 +143,7 @@ MonoBehaviour:
         ID: 303201
         Key: on_teachTwistPaper_fewTwists
         Scope:
-          InternalID: 0
+          InternalID: 1388552
         Triggers:
           List:
           - InternalID: 303198

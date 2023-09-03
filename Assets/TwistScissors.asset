@@ -129,7 +129,12 @@ MonoBehaviour:
           List: []
         Once: 0
         Padding: 0
-        Criteria: []
+        Criteria:
+        - FactReference:
+            InternalID: 303220
+          Min: 1
+          Max: 1
+          Operation: 0
         Modifications: []
     - rid: 669309080621809805
       type: {class: DecisionEntry, ns: , asm: Assembly-CSharp}
@@ -831,7 +836,7 @@ MonoBehaviour:
         ID: 303253
         Key: finished_talkToSlime
         Scope:
-          InternalID: 0
+          InternalID: 1388552
         Triggers:
           List: []
         Once: 0
@@ -872,16 +877,16 @@ MonoBehaviour:
           Max: 0
           Operation: 0
         Modifications: []
-        cancelWhenLeavesArea: 0
+        cancelWhenLeavesArea: 1
         areaFlag:
-          InternalID: 303123
+          InternalID: 303220
     - rid: 669309080621809838
       type: {class: FactEntry, ns: Aarthificial.Typewriter.Entries, asm: Aarthificial.Typewriter}
       data:
         ID: 303256
         Key: finished_yellAtSlime
         Scope:
-          InternalID: 0
+          InternalID: 1388552
         Triggers:
           List: []
         Once: 0
@@ -897,7 +902,7 @@ MonoBehaviour:
           InternalID: 0
         Triggers:
           List:
-          - InternalID: 303252
+          - InternalID: 303254
         Once: 0
         Padding: 0
         Criteria: []

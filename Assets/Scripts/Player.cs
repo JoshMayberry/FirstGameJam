@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 internal static class AnimationState {
 	internal const string Idle = "idle";
@@ -47,9 +48,9 @@ internal class SlimeForm {
 
 public class Player : Speaker {
 	private SlimeForm nextForm;
-	private SlimeForm currentForm;
+	internal SlimeForm currentForm { get; private set; }
 
-	internal Dictionary<string, SlimeForm> SlimeCatalogue { get; private set; }
+    internal Dictionary<string, SlimeForm> SlimeCatalogue { get; private set; }
 
 	[Header("Animation")]
     [Required] [SerializeField] private Animator normalAnimator;
@@ -63,18 +64,25 @@ public class Player : Speaker {
 
 	[Header("Physics")]
 	[SerializeField] private Transform attackCheckPosition;
-	private Rigidbody2D rb;
+	internal Rigidbody2D rb;
 
 	[Header("Input")]
 	[SerializeField] private float doActionGraceTime = 0.1f;
-	private Vector2 inputMove;
-	private float lastDoActionPressed;
+	[SerializeField] private float bugfixGraceTime = 1f;
+    private Vector2 inputMove;
+    private bool isBugFixApplied = true;
+    private float lastBugfix;
+    private float lastDoActionPressed;
     [Readonly] public bool isDoActionPressed;
     [Readonly] public bool isActingLoopOver;
 
     [Header("Actions")]
     [SerializeField] private float applyActionGraceTime = 0.25f;
+    [SerializeField] private float hurtGraceTime = 0.25f;
+    [Required][SerializeField] private Slider healthBar;
     private float lastActionSlam;
+    private float lastIsHurt;
+    [Readonly] public bool isHurting;
     [Readonly] public bool isSkinny;
     [Readonly] public bool isCutting;
     [Readonly] public bool isSlamming;
@@ -126,16 +134,37 @@ public class Player : Speaker {
 
 	void Start() {
         AudioManager.instance.SetSlimeForm(this.currentForm.id);
+        TypewriterEvents.instance.SetFact(this.typewriterContext, TypewriterEvents.instance.fact_playerHealth, (int)this.healthBar.value);
     }
 
     void Update() {
-		if (GameManager.instance.isGameOver || DialogManager.instance.isPlayerLocked || AudioManager.instance.musicMenu.activeSelf) {
+        this.lastBugfix -= Time.deltaTime;
+
+		if (!isBugFixApplied && (this.lastBugfix < 0.01)) {
+			// This is just to make sure things don't get stuck in one state (I've only noticed 'isActing', but perhaps others would happen too)
+			this.lastBugfix = 0;
+			this.isBugFixApplied = true;
+
+			this.isAnimatingOneshot = false;
+            this.isSlamActive = false;
+			this.isSkinny = false;
+			this.isHurting = false;
+			this.isSlamming = false;
+			this.isTwisting = false;
+			this.isActing = false;
+			this.isActingLoopOver = true;
+            GameManager.instance.ToggleGates(false);
+        }
+
+
+        if (GameManager.instance.isGameOver || DialogManager.instance.isPlayerLocked || AudioManager.instance.musicMenu.activeSelf) {
 			return;
 		}
 
 		// Update Timers
 		this.lastDoActionPressed -= Time.deltaTime;
 		this.lastActionSlam -= Time.deltaTime;
+		this.lastIsHurt -= Time.deltaTime;
 
         // Update States
         this.isDoActionPressed = (this.lastDoActionPressed > 0.01f);
@@ -175,13 +204,15 @@ public class Player : Speaker {
     void OnDoActionPress() {
 		this.isActingLoopOver = false;
 
-		if (!this.isActing) {
+        if (!this.isActing) {
 			this.lastDoActionPressed = this.doActionGraceTime;
 		}
     }
 
     void OnDoActionRelease() {
 		this.isActingLoopOver = true;
+		this.lastBugfix = this.bugfixGraceTime;
+		this.isBugFixApplied = false;
     }
 
     void UpdateAnimations() {
@@ -244,13 +275,35 @@ public class Player : Speaker {
 		this.isAnimatingOneshot = true;
 	}
 
-	void SetAnimation(string animationName, bool ignoreOneshot = false) {
+	bool SetAnimation(string animationName, bool ignoreOneshot = false) {
 		if ((!ignoreOneshot && this.isAnimatingOneshot) || (animationName == this.currentState)) {
-			return;
+			return false;
 		}
 
 		this.currentForm.animator.CrossFade(animationName, 0, 0);
 		this.currentState = animationName;
+		return true;
+    }
+
+	internal void TakeDamage(int amount) {
+		if (this.isHurting || (this.lastIsHurt > 0.01f)) {
+			return;
+		}
+
+		this.lastIsHurt = this.hurtGraceTime; // This is a backup for if you get hurt when another animation is playing
+
+        this.isHurting = SetAnimation(AnimationState.Hurt);
+		if (this.isHurting) {
+            this.isAnimatingOneshot = true;
+        }
+
+        this.healthBar.value -= amount;
+        TypewriterEvents.instance.SetFact(this.typewriterContext, TypewriterEvents.instance.fact_playerHealth, (int)this.healthBar.value);
+        AudioManager.instance.PlayOneShot("hurtSound", FmodEvents.instance.hurtSound, this.gameObject.transform.position);
+
+        if (this.healthBar.value <= 0) {
+            GameManager.instance.TriggerGameOver(GameOverMethod.ZeroHealth);
+        }
     }
 
     internal void AnimationStart(string animationName) {
@@ -264,10 +317,6 @@ public class Player : Speaker {
 
             case AnimationState.TwistIn:
                 AudioManager.instance.PlayOneShot("twistSound", FmodEvents.instance.twistSound, this.gameObject.transform.position);
-                break;
-
-            case AnimationState.Hurt:
-                AudioManager.instance.PlayOneShot("hurtSound", FmodEvents.instance.hurtSound, this.gameObject.transform.position);
                 break;
 
             case AnimationState.ActionStarting:
@@ -296,6 +345,9 @@ public class Player : Speaker {
                         break;
                 }
                 break;
+
+			case AnimationState.Hurt:
+				break;
 
             default:
                 throw new System.Exception("Unknown animation start event for '" + animationName + "'");
@@ -367,14 +419,17 @@ public class Player : Speaker {
 							break;
                         }
 
-						// Play the animation again
-                        //this.currentForm.animator.CrossFade(AnimationState.ActionLooping, 0, 0);
                         break;
 
                     default:
                         throw new System.Exception("Unknown slime form '" + this.currentForm.id + "'");
                 }
 				break;
+
+			case AnimationState.Hurt:
+				this.isAnimatingOneshot = false;
+				this.isHurting = false;
+                break;
 
             default:
 				throw new System.Exception("Unknown animation finish event for '" + animationName + "'");

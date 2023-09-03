@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 internal enum GameOverMethod {
-	LevelIntegrity, ZeroHealth
+	LevelIntegrity, ZeroHealth, FinishedGame
 }
 
 public class GameManager : MonoBehaviour {
@@ -18,7 +18,8 @@ public class GameManager : MonoBehaviour {
 
 	[SerializeField] private GameObject gameOver_levelIntegrity;
 	[SerializeField] private GameObject gameOver_hpZero;
-	[SerializeField] private LevelTransition levelTransition;
+	[SerializeField] private GameObject gameWon;
+    [SerializeField] private LevelTransition levelTransition;
 
 	internal List<Gate> gateRegistry;
 
@@ -51,43 +52,48 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void ChangeLevelIntegrity(int amount) {
-		levelIntegrityBar.value = Mathf.Max(Mathf.Min(levelIntegrityBar.value + amount, this.maxLevelIntegrity), 0);
-	}
+		this.levelIntegrityBar.value = Mathf.Max(Mathf.Min(this.levelIntegrityBar.value + amount, this.maxLevelIntegrity), 0);
+    }
 
-	public void OnLevelIntegrityChanged() {
-		if (levelIntegrityBar.value <= 0) {
-			this.TriggerGameOver(GameOverMethod.LevelIntegrity);
-		}
-	}
+    public void OnLevelIntegrityChanged() {
+        if (this.levelIntegrityBar.value <= 0) {
+            this.TriggerGameOver(GameOverMethod.LevelIntegrity);
+        }
+    }
 
-	internal void TriggerGameOver(GameOverMethod how) {
-		this.isGameOver = true;
-		switch (how) {
-			case GameOverMethod.LevelIntegrity:
-				this.gameOver_levelIntegrity.SetActive(true);
-				break;
+    internal void TriggerGameOver(GameOverMethod how) {
+        this.isGameOver = true;
 
-			case GameOverMethod.ZeroHealth:
-				this.gameOver_hpZero.SetActive(true);
-				break;
+        this.player.rb.AddForce(-this.player.rb.velocity, ForceMode2D.Impulse); // Remove all momentum
 
-			default:
-				throw new System.Exception("Unknown game over method '" + how + "'");
+        switch (how) {
+            case GameOverMethod.LevelIntegrity:
+                this.gameOver_levelIntegrity.SetActive(true);
+                break;
 
-		}
-	}
+            case GameOverMethod.ZeroHealth:
+                this.gameOver_hpZero.SetActive(true);
+                break;
 
-	public void ChangeScene(string sceneName) {
+            case GameOverMethod.FinishedGame:
+                this.gameWon.SetActive(true);
+                break;
+
+            default:
+                throw new System.Exception("Unknown game over method '" + how + "'");
+
+        }
+    }
+
+    public void ChangeScene(string sceneName) {
 		levelTransition.ChangeScene(sceneName);
 	}
 
 	public void Restart() {
-		Debug.Log("@Restart");
 		this.ChangeScene(this.currentScene.name);
 	}
 
 	internal void ToggleGates(bool state) {
-		Debug.Log("@ToggleGates");
 		foreach (Gate gate in this.gateRegistry) {
 			gate.ToggleSlipThrough(state);
 		}

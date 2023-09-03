@@ -45,7 +45,7 @@ public class AudioManager : MonoBehaviour {
     public AudioClip[] sfxMove;
     public AudioClip[] sfxTwist;
     public AudioClip[] sfxTalk;
-    //public AudioClip[] sfxHurt;
+    public AudioClip[] sfxHurt;
     private AudioSource audioSource;
     public GameObject musicVolumeButton;
 
@@ -61,7 +61,7 @@ public class AudioManager : MonoBehaviour {
 
 #if UNITY_WEBGL
         // WebGL is not playing nice with FMOD right now...
-        //this.isWebGl = true;
+        this.isWebGl = true;
 #endif
 
         this.eventInstances = new List<EventInstance>();
@@ -176,12 +176,16 @@ public class AudioManager : MonoBehaviour {
                     soundArray = this.sfxTwist;
                     break;
 
-                //case "hurtSound":
-                //    //soundArray = this.sfxHurt;
-                //    break;
+                case "hurtSound":
+                    soundArray = this.sfxHurt;
+                    break;
 
                 default:
                     throw new System.Exception("Unknown sound array name '" + webGlBackupName + "'");
+            }
+
+            if (soundArray.Length == 0) {
+                return;
             }
 
             int randomIndex = Random.Range(0, soundArray.Length);

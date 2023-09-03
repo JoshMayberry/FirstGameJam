@@ -14,13 +14,11 @@ public class LevelTransition : MonoBehaviour {
 
     public void ChangeScene(string sceneName) {
         this.levelName = sceneName;
-        Debug.Log("@ChangeScene");
         this.anim.SetTrigger("fadeIn");
     }
 
     // Called by animation
     public void GoToScene() {
-        Debug.Log("@GoToScene");
         SceneManager.LoadScene(this.levelName);
     }
 }
