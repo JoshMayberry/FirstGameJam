@@ -1,31 +1,24 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Aarthificial.Typewriter;
 using Aarthificial.Typewriter.References;
-using Aarthificial.Typewriter.Tools;
-using System.Xml;
-using Aarthificial.Typewriter.Entries;
 using Aarthificial.Typewriter.Blackboards;
 
 public class DialogManager : MonoBehaviour {
-	[SerializeField] internal Sprite[] chatBubbleSprite;
-	[SerializeField] internal Sprite[] chatButtonSprite;
-	[SerializeField] private ChatBubble chatBubblePrefab;
+    [Required] [SerializeField] internal Sprite[] chatBubbleSprite;
+    [Required] [SerializeField] internal Sprite[] chatButtonSprite;
+    [Required] [SerializeField] private ChatBubble chatBubblePrefab;
 
-	[SerializeField] private List<ChatBubble> activeChatBubbles;
-	[SerializeField] private List<ChatBubble> inactiveChatBubbles;
+	[Readonly] [SerializeField] private List<ChatBubble> activeChatBubbles;
+	[Readonly] [SerializeField] private List<ChatBubble> inactiveChatBubbles;
 
-	[SerializeField] private ChatBubble currentChat;
+	[Readonly] [SerializeField] private ChatBubble currentChat;
 
 	internal IBlackboard globalBlackboard;
 
-
-	internal bool isTalkPressed;
-	internal bool isPlayerLocked;
+    [Readonly] public bool isTalkPressed;
+	[Readonly] public bool isPlayerLocked;
 	internal bool isChatInProgress => currentChat != null;
-
 
 	public static DialogManager instance { get; private set; }
 	private void Awake() {
@@ -76,15 +69,20 @@ public class DialogManager : MonoBehaviour {
 	}
 
 	public ChatBubble SpawnChatBubble(Speaker firstSpeaker) {
-		// Try to reuse an inactive chatBubble, or create a new one
 		ChatBubble chatBubble;
-		if (this.inactiveChatBubbles.Count > 0) {
+
+        if (firstSpeaker.personalChatBubble != null) {
+            chatBubble = firstSpeaker.personalChatBubble;
+        }
+
+        // Try to reuse an inactive chatBubble, or create a new one
+        else if (this.inactiveChatBubbles.Count > 0) {
 			chatBubble = this.inactiveChatBubbles[this.inactiveChatBubbles.Count - 1];
 			this.inactiveChatBubbles.RemoveAt(this.inactiveChatBubbles.Count - 1);
 
-			//chatBubble.DoReset(bubblePosition);
-			this.activeChatBubbles.Add(chatBubble);
-		}
+            //chatBubble.DoReset(bubblePosition);
+            this.activeChatBubbles.Add(chatBubble);
+        }
 		else {
 			chatBubble = Instantiate(this.chatBubblePrefab, firstSpeaker.chatBubblePosition.position, this.transform.rotation);
 		}
@@ -96,13 +94,19 @@ public class DialogManager : MonoBehaviour {
 	}
 
 	internal void SetBubbleActive(ChatBubble chatBubble, bool state = true) {
+		if (chatBubble.isPersonal) {
+			return; // Personal bubbles do not enter the pool of available items
+		}
+
 		if (state) {
 			this.inactiveChatBubbles.Remove(chatBubble);
 			this.activeChatBubbles.Add(chatBubble);
+			chatBubble.gameObject.SetActive(true);
 			return;
-		}
+        }
 
 		this.activeChatBubbles.Remove(chatBubble);
 		this.inactiveChatBubbles.Add(chatBubble);
-	}
+		chatBubble.gameObject.SetActive(false);
+    }
 }

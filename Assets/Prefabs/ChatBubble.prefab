@@ -167,11 +167,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padding: {x: 3, y: 0.2}
   currentEvent:
-    InternalID: 1388563
+    InternalID: 303212
   isColliderEnabled: 0
   factColliderUpdates:
-    InternalID: 1388563
+    InternalID: 303217
   charsPerSecond: 32
+  startTime: 0
+  currentEntry:
+    ID: 0
+    Key: 
+    Scope:
+      InternalID: 0
+    Triggers:
+      List: []
+    Once: 0
+    Padding: 0
+    Criteria: []
+    Modifications: []
+    OnApply: []
+    OnInvoke: []
+    Speed: 1
+    IsChoice: 0
+    IsPlayerLocked: 0
+    Text: 
+    _speaker:
+      InternalID: 0
+  currentSpeaker: {fileID: 0}
+  isActive: 0
+  isTextCompleted: 0
+  isLastDialog: 0
+  isPersonal: 0
+  isSoftResetAfterConversation: 0
+  isCancelWhenLeavesArea: 0
+  areaFlag:
+    ID: 0
+    Key: 
+    Scope:
+      InternalID: 0
+    Triggers:
+      List: []
+    Once: 0
+    Padding: 0
+    Criteria: []
+    Modifications: []
 --- !u!58 &6324630478383625476
 CircleCollider2D:
   m_ObjectHideFlags: 0

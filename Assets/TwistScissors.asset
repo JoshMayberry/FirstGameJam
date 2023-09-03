@@ -1,0 +1,1051 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d0878fa1be1f546a2a65661326a877, type: 3}
+  m_Name: TwistScissors
+  m_EditorClassIdentifier: 
+  TableName: TwistScissors
+  Rules:
+  - rid: 669309080621809807
+  - rid: 669309080621809808
+  - rid: 669309080621809809
+  - rid: 669309080621809810
+  - rid: 669309080621809811
+  - rid: 669309080621809812
+  - rid: 669309080621809813
+  - rid: 669309080621809814
+  - rid: 669309080621809815
+  - rid: 669309080621809816
+  - rid: 669309080621809817
+  - rid: 669309080621809818
+  - rid: 669309080621809819
+  - rid: 669309080621809820
+  - rid: 669309080621809821
+  - rid: 669309080621809822
+  - rid: 669309080621809823
+  - rid: 669309080621809825
+  - rid: 669309080621809827
+  - rid: 669309080621809828
+  - rid: 669309080621809829
+  - rid: 669309080621809830
+  - rid: 669309080621809831
+  - rid: 669309080621809832
+  - rid: 669309080621809833
+  - rid: 669309080621809834
+  - rid: 669309080621809839
+  - rid: 669309080621809840
+  - rid: 669309080621809841
+  - rid: 669309080621809842
+  - rid: 669309080621809843
+  - rid: 669309080621809844
+  - rid: 669309080621809845
+  Facts:
+  - rid: 669309080621809800
+  - rid: 669309080621809801
+  - rid: 669309080621809802
+  - rid: 669309080621809803
+  - rid: 669309080621809824
+  - rid: 669309080621809835
+  - rid: 669309080621809838
+  Events:
+  - rid: 669309080621809804
+  - rid: 669309080621809805
+  - rid: 669309080621809806
+  - rid: 669309080621809826
+  - rid: 669309080621809836
+  references:
+    version: 2
+    RefIds:
+    - rid: 669309080621809800
+      type: {class: SpeakerEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303218
+        Key: skeleton_4a_confident
+        Scope:
+          InternalID: 0
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        DisplayName: Confident Skeleton
+    - rid: 669309080621809801
+      type: {class: SpeakerEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303219
+        Key: skeleton_4b_anxious
+        Scope:
+          InternalID: 0
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        DisplayName: Anxious Skeleton
+    - rid: 669309080621809802
+      type: {class: FactEntry, ns: Aarthificial.Typewriter.Entries, asm: Aarthificial.Typewriter}
+      data:
+        ID: 303220
+        Key: near_skeleton4
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+    - rid: 669309080621809803
+      type: {class: FactEntry, ns: Aarthificial.Typewriter.Entries, asm: Aarthificial.Typewriter}
+      data:
+        ID: 303221
+        Key: is_webCut
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+    - rid: 669309080621809804
+      type: {class: EventEntry, ns: Aarthificial.Typewriter.Entries, asm: Aarthificial.Typewriter}
+      data:
+        ID: 303222
+        Key: on_teachTwistScissor
+        Scope:
+          InternalID: 0
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+    - rid: 669309080621809805
+      type: {class: DecisionEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303223
+        Key: on_teachTwistScissor_webIntact
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303222
+        Once: 0
+        Padding: 0
+        Criteria:
+        - FactReference:
+            InternalID: 303221
+          Min: 0
+          Max: 0
+          Operation: 0
+        Modifications: []
+        cancelWhenLeavesArea: 1
+        areaFlag:
+          InternalID: 303220
+    - rid: 669309080621809806
+      type: {class: DecisionEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303224
+        Key: on_teachTwistScissor_webCut
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303222
+        Once: 0
+        Padding: 0
+        Criteria:
+        - FactReference:
+            InternalID: 303221
+          Min: 1
+          Max: 1
+          Operation: 0
+        - FactReference:
+            InternalID: 303242
+          Min: 0
+          Max: 0
+          Operation: 0
+        Modifications: []
+        cancelWhenLeavesArea: 1
+        areaFlag:
+          InternalID: 303220
+    - rid: 669309080621809807
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303225
+        Key: webIntact_1
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303223
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Hey, did you see that slime twist itself into different shapes?
+        _speaker:
+          InternalID: 303219
+    - rid: 669309080621809808
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303226
+        Key: webIntact_2
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303225
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Yeah, I heard they can even twist into a pair of scissors to solve
+          puzzles.
+        _speaker:
+          InternalID: 303218
+    - rid: 669309080621809809
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303227
+        Key: webIntact_3
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303226
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Scissors? Really? That's... oddly specific. You're pulling my leg bone.
+        _speaker:
+          InternalID: 303219
+    - rid: 669309080621809810
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303228
+        Key: webIntact_4
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303227
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: "No, seriously! Just presses '4' on some sort of cosmic keyboard, hold
+          down the spacebar, and voil\xE0! Snip-snip time!"
+        _speaker:
+          InternalID: 303218
+    - rid: 669309080621809811
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303229
+        Key: webIntact_5
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303228
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Snip-snip? It can cut things? Man, the heroes are gonna have a field
+          day with this. 'Look, a shortcut through the dungeon!'
+        _speaker:
+          InternalID: 303219
+    - rid: 669309080621809812
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303230
+        Key: webIntact_6
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303229
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Well- about that. Breaking things will lower the level integrity- so
+          it's not always the best solution to a problem; sometimes there's no alternative
+          though.
+        _speaker:
+          InternalID: 303218
+    - rid: 669309080621809813
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303231
+        Key: webIntact_7
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303230
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Yikes, that's a sharp dilemma. It's like playing with fire, except
+          it's scissors, and the only thing getting burned is the dungeon's structural
+          integrity...
+        _speaker:
+          InternalID: 303219
+    - rid: 669309080621809814
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303232
+        Key: webIntact_8
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303231
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Right, it's not just about keeping the dungeon intact for the hero.
+          It's also about our safety too.
+        _speaker:
+          InternalID: 303218
+    - rid: 669309080621809815
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303233
+        Key: webIntact_9
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303232
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: We need to make sure everything stays in place until the hero comes.
+          We can't have the dungeon falling apart beforehand.
+        _speaker:
+          InternalID: 303219
+    - rid: 669309080621809816
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303234
+        Key: webCut_1
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303224
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Did you see that!? Our slimy friend just went Edward Scissorhands on
+          those spider webs!
+        _speaker:
+          InternalID: 303219
+    - rid: 669309080621809817
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303235
+        Key: webCut_2
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303234
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Really? I thought spiders and slimes had some kind of unspoken agreement.
+          You know, gooey solidarity or something.
+        _speaker:
+          InternalID: 303218
+    - rid: 669309080621809818
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303236
+        Key: webCut_3
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303235
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Apparently not. And look, the Level Integrity just took another hit!
+          We're on shaky ground... well, not yet at least...
+        _speaker:
+          InternalID: 303219
+    - rid: 669309080621809819
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303237
+        Key: webCut_4
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303236
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Do you think we should say something? You know, like a friendly, 'Hey,
+          buddy, maybe ease up on the scissor action?
+        _speaker:
+          InternalID: 303218
+    - rid: 669309080621809820
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303238
+        Key: webCut_5
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303237
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Yeah, right. Since when do slimes listen to skeletons? We're basically
+          walking calcium deposits to them.
+        _speaker:
+          InternalID: 303219
+    - rid: 669309080621809821
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303239
+        Key: webCut_6
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303238
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: True, but we've got to do something. If the dungeon collapses, where
+          are we going to, you know, haunt?
+        _speaker:
+          InternalID: 303218
+    - rid: 669309080621809822
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303240
+        Key: webCut_7
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303239
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications:
+        - FactReference:
+            InternalID: 303242
+          Value: 1
+          Operation: 0
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Good point. Alright, let's try talking to it. But if it ignores us,
+          it's on you for not coming up with a better plan.
+        _speaker:
+          InternalID: 303219
+    - rid: 669309080621809823
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303241
+        Key: webCut_8
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303240
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Deal. But if it listens, I get to say, "I told you so."
+        _speaker:
+          InternalID: 303218
+    - rid: 669309080621809824
+      type: {class: FactEntry, ns: Aarthificial.Typewriter.Entries, asm: Aarthificial.Typewriter}
+      data:
+        ID: 303242
+        Key: finished_webCut
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+    - rid: 669309080621809825
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303243
+        Key: talk_1
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303244
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Alright, here goes nothing. Hey, Slime! Could you maybe not cut so
+          much stuff? The dungeon's falling apart!
+        _speaker:
+          InternalID: 303218
+    - rid: 669309080621809826
+      type: {class: DecisionEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303244
+        Key: on_teachTwistScissor_talkToSlime
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303222
+        Once: 0
+        Padding: 0
+        Criteria:
+        - FactReference:
+            InternalID: 303221
+          Min: 1
+          Max: 1
+          Operation: 0
+        - FactReference:
+            InternalID: 303242
+          Min: 1
+          Max: 1
+          Operation: 0
+        - FactReference:
+            InternalID: 303253
+          Min: 0
+          Max: 0
+          Operation: 0
+        Modifications: []
+        cancelWhenLeavesArea: 1
+        areaFlag:
+          InternalID: 303220
+    - rid: 669309080621809827
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303245
+        Key: talk_2
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303243
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: '*waving arms* Yeah, we all have to live here, you know!'
+        _speaker:
+          InternalID: 303219
+    - rid: 669309080621809828
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303246
+        Key: talk_3
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303245
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: ...
+        _speaker:
+          InternalID: 303113
+    - rid: 669309080621809829
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303247
+        Key: talk_4
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303246
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Well, that went about as well as I expected.
+        _speaker:
+          InternalID: 303219
+    - rid: 669309080621809830
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303248
+        Key: talk_5
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303247
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: I can't believe it just ignored us! Do you think it didn't hear?
+        _speaker:
+          InternalID: 303218
+    - rid: 669309080621809831
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303249
+        Key: talk_6
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303248
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Oh, it heard us alright. It's just that we're skeletons. No one ever
+          listens to skeletons.
+        _speaker:
+          InternalID: 303219
+    - rid: 669309080621809832
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303250
+        Key: talk_7
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303249
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Well I have a bone to pick... This one will do. Let's try again now.
+        _speaker:
+          InternalID: 303218
+    - rid: 669309080621809833
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303251
+        Key: talk_8
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303250
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications:
+        - FactReference:
+            InternalID: 303253
+          Value: 1
+          Operation: 0
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Seriously? Perhaps we could leave a note? Something like, "Dear Slime,
+          please stop turning into scissors. Sincerely, Concerned Skeletons."
+        _speaker:
+          InternalID: 303219
+    - rid: 669309080621809834
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303252
+        Key: talk_9
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303251
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Yeah, because the slime that couldn't hear us is going to stop and
+          read a note. Watch this...
+        _speaker:
+          InternalID: 303218
+    - rid: 669309080621809835
+      type: {class: FactEntry, ns: Aarthificial.Typewriter.Entries, asm: Aarthificial.Typewriter}
+      data:
+        ID: 303253
+        Key: finished_talkToSlime
+        Scope:
+          InternalID: 0
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+    - rid: 669309080621809836
+      type: {class: DecisionEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303254
+        Key: on_teachTwistScissor_yellAtSlime
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303222
+        Once: 0
+        Padding: 0
+        Criteria:
+        - FactReference:
+            InternalID: 303221
+          Min: 1
+          Max: 1
+          Operation: 0
+        - FactReference:
+            InternalID: 303242
+          Min: 1
+          Max: 1
+          Operation: 0
+        - FactReference:
+            InternalID: 303253
+          Min: 1
+          Max: 1
+          Operation: 0
+        - FactReference:
+            InternalID: 303256
+          Min: 0
+          Max: 0
+          Operation: 0
+        Modifications: []
+        cancelWhenLeavesArea: 0
+        areaFlag:
+          InternalID: 303123
+    - rid: 669309080621809838
+      type: {class: FactEntry, ns: Aarthificial.Typewriter.Entries, asm: Aarthificial.Typewriter}
+      data:
+        ID: 303256
+        Key: finished_yellAtSlime
+        Scope:
+          InternalID: 0
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+    - rid: 669309080621809839
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303257
+        Key: yell_1
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303252
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Hey, slime! Yeah, you, the gooey one that looks like a moldy Jell-O!
+        _speaker:
+          InternalID: 303218
+    - rid: 669309080621809840
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303258
+        Key: yell_2
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303257
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: ...
+        _speaker:
+          InternalID: 303113
+    - rid: 669309080621809841
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303259
+        Key: yell_3
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303258
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Nice, real subtle. You're a charmer, you know that?
+        _speaker:
+          InternalID: 303219
+    - rid: 669309080621809842
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303260
+        Key: yell_4
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303259
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Well, that was rude. Didn't even look my way.
+        _speaker:
+          InternalID: 303218
+    - rid: 669309080621809843
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303261
+        Key: yell_5
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303260
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Look, we tried. If the dungeon collapses, we can at least say we did
+          our part. Besides, it's not like we can die again.
+        _speaker:
+          InternalID: 303219
+    - rid: 669309080621809844
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303262
+        Key: yell_6
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303261
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: True. But I'd rather not spend the afterlife buried under a ton of
+          bricks and dungeon debris.
+        _speaker:
+          InternalID: 303218
+    - rid: 669309080621809845
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303263
+        Key: yell_7
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303262
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications:
+        - FactReference:
+            InternalID: 303256
+          Value: 1
+          Operation: 0
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Well... if you'll excuse me, I'm going to draft that letter. And if
+          it works- I'll get to say I told YOU so.
+        _speaker:
+          InternalID: 303219

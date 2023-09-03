@@ -96,3 +96,5 @@ Assets/Samples/Typewriter/1.1.3/Visual Novel/Scenes.meta
 Assets/Samples/Typewriter/1.1.3/Visual Novel/Prefabs/
 Assets/Samples/Typewriter/1.1.3/Visual Novel/Scenes/
 Assets/TextMesh Pro/
+dist/
+Assets/StreamingAssets/

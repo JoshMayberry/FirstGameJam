@@ -1,0 +1,341 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d0878fa1be1f546a2a65661326a877, type: 3}
+  m_Name: TwistPaper
+  m_EditorClassIdentifier: 
+  TableName: TwistPaper
+  Rules:
+  - rid: 669309055316263234
+  - rid: 669309055316263235
+  - rid: 669309055316263237
+  - rid: 669309055316263238
+  - rid: 669309055316263239
+  - rid: 669309055316263241
+  - rid: 669309055316263242
+  - rid: 669309055316263243
+  - rid: 669309055316263244
+  - rid: 669309055316263245
+  Facts:
+  - rid: 669309055316263230
+  - rid: 669309055316263231
+  - rid: 669309055316263232
+  Events:
+  - rid: 669309055316263233
+  - rid: 669309055316263236
+  references:
+    version: 2
+    RefIds:
+    - rid: 669309055316263230
+      type: {class: SpeakerEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303195
+        Key: skeleton_3a
+        Scope:
+          InternalID: 0
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        DisplayName: Knowledgable Skeleton
+    - rid: 669309055316263231
+      type: {class: SpeakerEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303196
+        Key: skeleton_3b
+        Scope:
+          InternalID: 0
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        DisplayName: Impressed Skeleton
+    - rid: 669309055316263232
+      type: {class: FactEntry, ns: Aarthificial.Typewriter.Entries, asm: Aarthificial.Typewriter}
+      data:
+        ID: 303197
+        Key: near_skeleton3
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+    - rid: 669309055316263233
+      type: {class: EventEntry, ns: Aarthificial.Typewriter.Entries, asm: Aarthificial.Typewriter}
+      data:
+        ID: 303198
+        Key: on_teachTwistPaper
+        Scope:
+          InternalID: 0
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria:
+        - FactReference:
+            InternalID: 303197
+          Min: 1
+          Max: 1
+          Operation: 0
+        Modifications: []
+    - rid: 669309055316263234
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303199
+        Key: twistPaper_1
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303201
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Hey, did you know that slimes can twist into different shapes?
+        _speaker:
+          InternalID: 303195
+    - rid: 669309055316263235
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303200
+        Key: twistPaper_2
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303199
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Really? I thought they were just, you know, blobby and squishy.
+        _speaker:
+          InternalID: 303196
+    - rid: 669309055316263236
+      type: {class: DecisionEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303201
+        Key: on_teachTwistPaper_fewTwists
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303198
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        cancelWhenLeavesArea: 1
+        areaFlag:
+          InternalID: 303197
+    - rid: 669309055316263237
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303202
+        Key: twistPaper_3
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303200
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Oh, they're blobby and squishy alright, but they can also turn into
+          a rock, paper, or scissors to solve puzzles!
+        _speaker:
+          InternalID: 303195
+    - rid: 669309055316263238
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303203
+        Key: twistPaper_4
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303202
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: I wish I could do that. My bones are too stiff. They probably use the
+          number keys to twist into different shapes- right?
+        _speaker:
+          InternalID: 303196
+    - rid: 669309055316263239
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303204
+        Key: twistPaper_5
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303203
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Yup. Specifically, 2 twists the slime into paper, 3 twists it into
+          scissors, 4 twists it into a rock, and 1 returns it to its normal, blobby
+          self.
+        _speaker:
+          InternalID: 303195
+    - rid: 669309055316263241
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303206
+        Key: twistPaper_6
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303204
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Got it! 1 for blob, 2 for paper, 3 for scissors and 4 for rock. Easy
+          enough to remember.
+        _speaker:
+          InternalID: 303196
+    - rid: 669309055316263242
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303207
+        Key: twistPaper_7
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303206
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Oh, and there's one more thing. Holding the space bar performs an action,
+          but the action depends on the slime's current shape.
+        _speaker:
+          InternalID: 303195
+    - rid: 669309055316263243
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303208
+        Key: twistPaper_8
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303207
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Really? So what does holding the space bar do when the slime is twisted
+          to look like paper?
+        _speaker:
+          InternalID: 303196
+    - rid: 669309055316263244
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303209
+        Key: twistPaper_9
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303208
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: It will make the slime turn so they are skinny- allowing them to pass
+          through tight spaces.
+        _speaker:
+          InternalID: 303195
+    - rid: 669309055316263245
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303210
+        Key: twistPaper_10
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303209
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Like that gate down there- a slime could twist into a paper shape and
+          then slip between the bars by pressing space.  That's pretty cool!
+        _speaker:
+          InternalID: 303196

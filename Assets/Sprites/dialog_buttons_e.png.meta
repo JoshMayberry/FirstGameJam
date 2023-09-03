@@ -138,7 +138,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 16
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -159,7 +159,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -171,6 +171,27 @@ TextureImporter:
       bones: []
       spriteID: 2544eb0f137ebc44fb79e874c86330bd
       internalID: -1885786004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialog_buttons_e_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 017967addc36a604d96bc845afc580d8
+      internalID: 1573949934
       vertices: []
       indices: 
       edges: []
@@ -188,6 +209,7 @@ TextureImporter:
     nameFileIdTable:
       dialog_buttons_e_0: -6183313132699822743
       dialog_buttons_e_1: -1885786004
+      dialog_buttons_e_2: 1573949934
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -17,50 +17,35 @@ MonoBehaviour:
   Facts:
   - rid: 5862282233427787776
   - rid: 5862282233427787777
-  - rid: 5862282233427787799
-  - rid: 5862282233427787800
-  - rid: 5862282233427787801
-  - rid: 669309055316262927
-  - rid: 669309055316262928
   - rid: 669309055316262929
-  Events: []
+  - rid: 669309080621809765
+  - rid: 669309080621809760
+  - rid: 669309080621809768
+  Events:
+  - rid: 669309080621809747
   references:
     version: 2
     RefIds:
-    - rid: 669309055316262927
-      type: {class: SpeakerEntry, ns: , asm: Assembly-CSharp}
-      data:
-        ID: 303111
-        Key: skeleton_1a
-        Scope:
-          InternalID: 0
-        Triggers:
-          List: []
-        Once: 0
-        Padding: 0
-        Criteria: []
-        Modifications: []
-        DisplayName: Skeleton 1A
-    - rid: 669309055316262928
-      type: {class: SpeakerEntry, ns: , asm: Assembly-CSharp}
-      data:
-        ID: 303112
-        Key: skeleton_1b
-        Scope:
-          InternalID: 0
-        Triggers:
-          List: []
-        Once: 0
-        Padding: 0
-        Criteria: []
-        Modifications: []
-        DisplayName: Skeleton 1B
     - rid: 669309055316262929
       type: {class: SpeakerEntry, ns: , asm: Assembly-CSharp}
       data:
         ID: 303113
         Key: player
         Scope:
+          InternalID: 1388552
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        DisplayName: Slime
+    - rid: 669309080621809747
+      type: {class: EventEntry, ns: Aarthificial.Typewriter.Entries, asm: Aarthificial.Typewriter}
+      data:
+        ID: 303212
+        Key: event_nothing
+        Scope:
           InternalID: 0
         Triggers:
           List: []
@@ -68,7 +53,47 @@ MonoBehaviour:
         Padding: 0
         Criteria: []
         Modifications: []
-        DisplayName: Player
+    - rid: 669309080621809760
+      type: {class: SpeakerEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303215
+        Key: speaker_nothing
+        Scope:
+          InternalID: 0
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        DisplayName: 
+    - rid: 669309080621809765
+      type: {class: SpeakerEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303216
+        Key: system
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        DisplayName: Game System
+    - rid: 669309080621809768
+      type: {class: FactEntry, ns: Aarthificial.Typewriter.Entries, asm: Aarthificial.Typewriter}
+      data:
+        ID: 303217
+        Key: fact_nothing
+        Scope:
+          InternalID: 0
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
     - rid: 5862282233427787776
       type: {class: ScopeEntry, ns: Aarthificial.Typewriter.Entries, asm: Aarthificial.Typewriter}
       data:
@@ -95,45 +120,3 @@ MonoBehaviour:
         Padding: 0
         Criteria: []
         Modifications: []
-    - rid: 5862282233427787799
-      type: {class: SpeakerEntry, ns: , asm: Assembly-CSharp}
-      data:
-        ID: 1388571
-        Key: linear
-        Scope:
-          InternalID: 0
-        Triggers:
-          List: []
-        Once: 0
-        Padding: 0
-        Criteria: []
-        Modifications: []
-        DisplayName: Linear
-    - rid: 5862282233427787800
-      type: {class: SpeakerEntry, ns: , asm: Assembly-CSharp}
-      data:
-        ID: 1388572
-        Key: choices
-        Scope:
-          InternalID: 0
-        Triggers:
-          List: []
-        Once: 0
-        Padding: 0
-        Criteria: []
-        Modifications: []
-        DisplayName: Choices
-    - rid: 5862282233427787801
-      type: {class: SpeakerEntry, ns: , asm: Assembly-CSharp}
-      data:
-        ID: 1388573
-        Key: contextual
-        Scope:
-          InternalID: 0
-        Triggers:
-          List: []
-        Once: 0
-        Padding: 0
-        Criteria: []
-        Modifications: []
-        DisplayName: Contextual

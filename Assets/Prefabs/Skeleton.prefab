@@ -165,6 +165,9 @@ MonoBehaviour:
   chatBubblePosition: {fileID: 9101420238559516123}
   chatBubbleAlignment: 1
   speakerType: 0
+  speakerReference:
+    InternalID: 303123
+  displayName: 
 --- !u!1001 &2855302874720913290
 PrefabInstance:
   m_ObjectHideFlags: 0

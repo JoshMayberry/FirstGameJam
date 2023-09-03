@@ -1,5 +1,3 @@
-using Aarthificial.Typewriter.Entries;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,7 +11,9 @@ internal static class AnimationState {
 	internal const string Hurt = "hurt";
 	internal const string TwistIn = "twist_in";
 	internal const string TwistOut = "twist_out";
-	//internal const string DoAction = "do_action";
+	internal const string ActionStarting = "action_starting";
+	internal const string ActionLooping = "action_looping";
+	internal const string ActionEnding = "action_ending";
 }
 
 internal enum SlimeFormId {
@@ -49,13 +49,14 @@ public class Player : Speaker {
 	internal Dictionary<string, SlimeForm> SlimeCatalogue { get; private set; }
 
 	[Header("Animation")]
-	[SerializeField] private Animator normalAnimator;
-	[SerializeField] private Animator healAnimator;
-	[SerializeField] private Animator defendAnimator;
-	[SerializeField] private Animator attackAnimator;
-	private string currentState = AnimationState.Idle;
-	private bool isTwisting;
-	private bool isAnimatingOneshot;
+    [Required] [SerializeField] private Animator normalAnimator;
+	[Required] [SerializeField] private Animator healAnimator;
+	[Required] [SerializeField] private Animator defendAnimator;
+	[Required] [SerializeField] private Animator attackAnimator;
+	[Readonly] public string currentState = AnimationState.Idle;
+	[Readonly] public bool isTwisting;
+	[Readonly] public bool isActing;
+    [Readonly] public bool isAnimatingOneshot;
 
 	[Header("Physics")]
 	[SerializeField] private Transform attackCheckPosition;
@@ -65,7 +66,17 @@ public class Player : Speaker {
 	[SerializeField] private float doActionGraceTime = 0.1f;
 	private Vector2 inputMove;
 	private float lastDoActionPressed;
-	public bool isDoActionPressed { get; private set; }
+    [Readonly] public bool isDoActionPressed;
+    [Readonly] public bool isActingLoopOver;
+
+    [Header("Actions")]
+    [SerializeField] private float applyActionGraceTime = 0.25f;
+    private float lastActionSlam;
+    [Readonly] public bool isSkinny;
+    [Readonly] public bool isCutting;
+    [Readonly] public bool isSlamming;
+    [Readonly] public bool isSlamActive;
+
     private void Awake() {
 		this.rb = this.GetComponent<Rigidbody2D>();
 
@@ -110,47 +121,24 @@ public class Player : Speaker {
 		this.currentForm = this.SlimeCatalogue["Normal"];
 	}
 
-	private void Start() {
-        //this.SpawnChatBubble("Testing...");
-
-        FactEntry fact_moveCount = TypewriterEvents.instance.fact_moveCount.GetEntry<FactEntry>();
-		//fact_moveCount.
-	}
-
-	void Update() {
+    void Update() {
 		if (GameManager.instance.isGameOver || DialogManager.instance.isPlayerLocked) {
 			return;
 		}
 
 		// Update Timers
 		this.lastDoActionPressed -= Time.deltaTime;
+		this.lastActionSlam -= Time.deltaTime;
 
-		// Update States
-		this.isDoActionPressed = (this.lastDoActionPressed > 0.01f);
+        // Update States
+        this.isDoActionPressed = (this.lastDoActionPressed > 0.01f);
+        this.isSlamActive = (this.lastActionSlam > 0.01f);
 
-		if ((this.inputMove.x == 0) && (this.inputMove.y == 0)) {
-			SetAnimation(AnimationState.Idle);
-		}
-		else if (this.inputMove.x < 0) {
-			SetAnimation(AnimationState.MoveRight);
-            TypewriterEvents.instance.IncrementFact(this.typewriterContext, TypewriterEvents.instance.fact_moveCount, 1);
-        }
-        else if (this.inputMove.x > 0) {
-			SetAnimation(AnimationState.MoveLeft);
-            TypewriterEvents.instance.IncrementFact(this.typewriterContext, TypewriterEvents.instance.fact_moveCount, 1);
-        }
-        else if (this.inputMove.y > 0) {
-			SetAnimation(AnimationState.MoveUp);
-            TypewriterEvents.instance.IncrementFact(this.typewriterContext, TypewriterEvents.instance.fact_moveCount, 1);
-        }
-        else if (this.inputMove.y < 0) {
-			SetAnimation(AnimationState.MoveDown);
-            TypewriterEvents.instance.IncrementFact(this.typewriterContext, TypewriterEvents.instance.fact_moveCount, 1);
-        }
-    }
+        this.UpdateAnimations();
+	}
 
 	private void FixedUpdate() {
-		if (GameManager.instance.isGameOver || DialogManager.instance.isPlayerLocked) {
+		if (GameManager.instance.isGameOver || DialogManager.instance.isPlayerLocked || this.isSlamming) {
 			return;
 		}
 
@@ -175,11 +163,53 @@ public class Player : Speaker {
 
 	void OnTwistHeal() {
 		this.SetForm("Heal");
-	}
+    }
 
-	void OnDoAction() {
-		this.lastDoActionPressed = this.doActionGraceTime;
-	}
+    void OnDoActionPress() {
+		this.isActingLoopOver = false;
+
+		if (!this.isActing) {
+			this.lastDoActionPressed = this.doActionGraceTime;
+		}
+    }
+
+    void OnDoActionRelease() {
+		this.isActingLoopOver = true;
+    }
+
+    void UpdateAnimations() {
+        if (this.isActing) {
+			return;
+		}
+
+		if (this.isDoActionPressed) {
+            this.isDoActionPressed = false;
+			this.lastDoActionPressed = 0f;
+
+			SetAnimation(AnimationState.ActionStarting);
+            this.isAnimatingOneshot = true;
+			this.isActing = true;
+        }
+        else if ((this.inputMove.x == 0) && (this.inputMove.y == 0)) {
+            SetAnimation(AnimationState.Idle);
+        }
+        else if (this.inputMove.x < 0) {
+            SetAnimation(AnimationState.MoveRight);
+            TypewriterEvents.instance.IncrementFact(this.typewriterContext, TypewriterEvents.instance.fact_moveCount, 1);
+        }
+        else if (this.inputMove.x > 0) {
+            SetAnimation(AnimationState.MoveLeft);
+            TypewriterEvents.instance.IncrementFact(this.typewriterContext, TypewriterEvents.instance.fact_moveCount, 1);
+        }
+        else if (this.inputMove.y > 0) {
+            SetAnimation(AnimationState.MoveUp);
+            TypewriterEvents.instance.IncrementFact(this.typewriterContext, TypewriterEvents.instance.fact_moveCount, 1);
+        }
+        else if (this.inputMove.y < 0) {
+            SetAnimation(AnimationState.MoveDown);
+            TypewriterEvents.instance.IncrementFact(this.typewriterContext, TypewriterEvents.instance.fact_moveCount, 1);
+        }
+    }
 
 	void UpdateMovement() {
 		Vector2 speed_target = new Vector2(this.inputMove.x * this.currentForm.maxSpeed, this.inputMove.y * this.currentForm.maxSpeed);
@@ -193,7 +223,7 @@ public class Player : Speaker {
 	}
 
 	void SetForm(string newForm) {
-		if ((GameManager.instance.isGameOver) || DialogManager.instance.isPlayerLocked || this.isTwisting || (newForm == this.currentForm.key)) {
+		if ((GameManager.instance.isGameOver) || DialogManager.instance.isPlayerLocked || this.isTwisting || this.isActing || (newForm == this.currentForm.key)) {
 			return;
 		}
 
@@ -214,9 +244,59 @@ public class Player : Speaker {
 
 		this.currentForm.animator.CrossFade(animationName, 0, 0);
 		this.currentState = animationName;
-	}
+    }
 
-	internal void AnimationFinished(string animationName) {
+    internal void AnimationStart(string animationName) {
+        switch (animationName) {
+            case AnimationState.MoveUp:
+            case AnimationState.MoveDown:
+            case AnimationState.MoveLeft:
+            case AnimationState.MoveRight:
+                AudioManager.instance.PlayOneShot(FmodEvents.instance.moveSound, this.gameObject.transform.position);
+                break;
+
+            case AnimationState.TwistIn:
+                AudioManager.instance.PlayOneShot(FmodEvents.instance.twistSound, this.gameObject.transform.position);
+                break;
+
+            case AnimationState.Hurt:
+                AudioManager.instance.PlayOneShot(FmodEvents.instance.hurtSound, this.gameObject.transform.position);
+                break;
+
+            case AnimationState.ActionStarting:
+				switch (this.currentForm.id) {
+					case SlimeFormId.Normal:
+						this.isActing = false;
+						this.isAnimatingOneshot = false;
+						break;
+
+					case SlimeFormId.Defend:
+						this.isSlamming = true;
+                        break;
+				}
+
+                break;
+
+			case AnimationState.ActionEnding:
+				switch (this.currentForm.id) {
+					case SlimeFormId.Heal:
+						GameManager.instance.ToggleGates(false);
+						this.isSkinny = false;
+						break;
+
+                    case SlimeFormId.Defend:
+                        this.rb.AddForce(-this.rb.velocity, ForceMode2D.Impulse); // Remove all momentum
+                        break;
+                }
+                break;
+
+            default:
+                throw new System.Exception("Unknown animation start event for '" + animationName + "'");
+
+        }
+    }
+
+    internal void AnimationFinished(string animationName) {
 		switch (animationName) {
 			case AnimationState.TwistIn:
 				this.currentForm.animator.gameObject.SetActive(false);
@@ -231,32 +311,66 @@ public class Player : Speaker {
 				TypewriterEvents.instance.IncrementFact(this.typewriterContext, TypewriterEvents.instance.fact_twistCount, 1);
                 break;
 
-			default:
-				throw new System.Exception("Unknown animation event for '" + animationName + "'");
+            case AnimationState.ActionStarting:
+				switch (this.currentForm.id) {
+					case SlimeFormId.Heal:
+						this.isSkinny = true;
+						GameManager.instance.ToggleGates(true);
+                        SetAnimation(AnimationState.ActionLooping, true);
+                        break;
+
+					case SlimeFormId.Defend:
+                        this.lastActionSlam = this.applyActionGraceTime;
+                        SetAnimation(AnimationState.ActionEnding, true);
+                        break;
+
+					case SlimeFormId.Attack:
+						this.isCutting = true;
+                        SetAnimation(AnimationState.ActionLooping, true);
+                        break;
+
+					default:
+						throw new System.Exception("Unknown slime form '" + this.currentForm.id + "'");
+				}
+				break;
+
+            case AnimationState.ActionEnding:
+				switch (this.currentForm.id) {
+                    case SlimeFormId.Defend:
+                        this.isSlamming = false;
+                        break;
+
+                    case SlimeFormId.Attack:
+                        this.isCutting = false;
+                        break;
+                }
+
+                this.isAnimatingOneshot = false;
+                this.isActing = false;
+                TypewriterEvents.instance.IncrementFact(this.typewriterContext, TypewriterEvents.instance.fact_actCount, 1);
+                break;
+
+			case AnimationState.ActionLooping:
+                switch (this.currentForm.id) {
+                    case SlimeFormId.Heal:
+                    case SlimeFormId.Attack:
+						if (this.isActingLoopOver) {
+                            SetAnimation(AnimationState.ActionEnding, true);
+							break;
+                        }
+
+						// Play the animation again
+                        //this.currentForm.animator.CrossFade(AnimationState.ActionLooping, 0, 0);
+                        break;
+
+                    default:
+                        throw new System.Exception("Unknown slime form '" + this.currentForm.id + "'");
+                }
+				break;
+
+            default:
+				throw new System.Exception("Unknown animation finish event for '" + animationName + "'");
 
 		}
-	}
-
-	internal void AnimationStart(string animationName) {
-		switch (animationName) {
-			case AnimationState.MoveUp:
-			case AnimationState.MoveDown:
-			case AnimationState.MoveLeft:
-			case AnimationState.MoveRight:
-				AudioManager.instance.PlayOneShot(FmodEvents.instance.moveSound, this.gameObject.transform.position);
-				break;
-
-			case AnimationState.TwistIn:
-				AudioManager.instance.PlayOneShot(FmodEvents.instance.twistSound, this.gameObject.transform.position);
-				break;
-
-			case AnimationState.Hurt:
-				AudioManager.instance.PlayOneShot(FmodEvents.instance.hurtSound, this.gameObject.transform.position);
-				break;
-
-			default:
-				throw new System.Exception("Unknown animation event for '" + animationName + "'");
-
-		}
-	}
+    }
 }

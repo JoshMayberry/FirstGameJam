@@ -51,12 +51,21 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "DoAction",
+                    "name": "DoActionPress",
                     "type": "Button",
                     "id": "2a96009b-a1b5-4bdb-b249-8db66344ecec",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DoActionRelease",
+                    "type": "Button",
+                    "id": "d0bffa0d-0196-4293-abc1-debb4acd4067",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)",
                     "initialStateCheck": false
                 }
             ],
@@ -222,14 +231,14 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "DoAction",
+                    "action": "DoActionPress",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "c75721d2-f7cc-4fba-a7e5-b876b8107912",
-                    "path": "<Keyboard>/2",
+                    "path": "<Keyboard>/4",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -240,7 +249,7 @@
                 {
                     "name": "",
                     "id": "19826c5e-0d83-4619-8036-491032df3b99",
-                    "path": "<Keyboard>/numpad2",
+                    "path": "<Keyboard>/numpad4",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -273,7 +282,7 @@
                 {
                     "name": "",
                     "id": "d1319be1-3c05-42e3-9053-f0feb3409ba4",
-                    "path": "<Keyboard>/4",
+                    "path": "<Keyboard>/2",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -284,11 +293,22 @@
                 {
                     "name": "",
                     "id": "b79a3850-7403-4e6c-9057-a2f62cfcd7f5",
-                    "path": "<Keyboard>/numpad4",
+                    "path": "<Keyboard>/numpad2",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "TwistHeal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dcdbe592-17e1-4d49-937d-210f1cfa01dc",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "DoActionRelease",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

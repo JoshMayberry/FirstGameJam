@@ -73,12 +73,21 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""DoAction"",
+                    ""name"": ""DoActionPress"",
                     ""type"": ""Button"",
                     ""id"": ""2a96009b-a1b5-4bdb-b249-8db66344ecec"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DoActionRelease"",
+                    ""type"": ""Button"",
+                    ""id"": ""d0bffa0d-0196-4293-abc1-debb4acd4067"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)"",
                     ""initialStateCheck"": false
                 }
             ],
@@ -244,14 +253,14 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""DoAction"",
+                    ""action"": ""DoActionPress"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""c75721d2-f7cc-4fba-a7e5-b876b8107912"",
-                    ""path"": ""<Keyboard>/2"",
+                    ""path"": ""<Keyboard>/4"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -262,7 +271,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""19826c5e-0d83-4619-8036-491032df3b99"",
-                    ""path"": ""<Keyboard>/numpad2"",
+                    ""path"": ""<Keyboard>/numpad4"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -295,7 +304,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d1319be1-3c05-42e3-9053-f0feb3409ba4"",
-                    ""path"": ""<Keyboard>/4"",
+                    ""path"": ""<Keyboard>/2"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -306,11 +315,22 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""b79a3850-7403-4e6c-9057-a2f62cfcd7f5"",
-                    ""path"": ""<Keyboard>/numpad4"",
+                    ""path"": ""<Keyboard>/numpad2"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""TwistHeal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dcdbe592-17e1-4d49-937d-210f1cfa01dc"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""DoActionRelease"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -903,7 +923,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_TwistAttack = m_Player.FindAction("TwistAttack", throwIfNotFound: true);
         m_Player_TwistDefend = m_Player.FindAction("TwistDefend", throwIfNotFound: true);
         m_Player_TwistHeal = m_Player.FindAction("TwistHeal", throwIfNotFound: true);
-        m_Player_DoAction = m_Player.FindAction("DoAction", throwIfNotFound: true);
+        m_Player_DoActionPress = m_Player.FindAction("DoActionPress", throwIfNotFound: true);
+        m_Player_DoActionRelease = m_Player.FindAction("DoActionRelease", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -982,7 +1003,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_TwistAttack;
     private readonly InputAction m_Player_TwistDefend;
     private readonly InputAction m_Player_TwistHeal;
-    private readonly InputAction m_Player_DoAction;
+    private readonly InputAction m_Player_DoActionPress;
+    private readonly InputAction m_Player_DoActionRelease;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -992,7 +1014,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @TwistAttack => m_Wrapper.m_Player_TwistAttack;
         public InputAction @TwistDefend => m_Wrapper.m_Player_TwistDefend;
         public InputAction @TwistHeal => m_Wrapper.m_Player_TwistHeal;
-        public InputAction @DoAction => m_Wrapper.m_Player_DoAction;
+        public InputAction @DoActionPress => m_Wrapper.m_Player_DoActionPress;
+        public InputAction @DoActionRelease => m_Wrapper.m_Player_DoActionRelease;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1017,9 +1040,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @TwistHeal.started += instance.OnTwistHeal;
             @TwistHeal.performed += instance.OnTwistHeal;
             @TwistHeal.canceled += instance.OnTwistHeal;
-            @DoAction.started += instance.OnDoAction;
-            @DoAction.performed += instance.OnDoAction;
-            @DoAction.canceled += instance.OnDoAction;
+            @DoActionPress.started += instance.OnDoActionPress;
+            @DoActionPress.performed += instance.OnDoActionPress;
+            @DoActionPress.canceled += instance.OnDoActionPress;
+            @DoActionRelease.started += instance.OnDoActionRelease;
+            @DoActionRelease.performed += instance.OnDoActionRelease;
+            @DoActionRelease.canceled += instance.OnDoActionRelease;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1039,9 +1065,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @TwistHeal.started -= instance.OnTwistHeal;
             @TwistHeal.performed -= instance.OnTwistHeal;
             @TwistHeal.canceled -= instance.OnTwistHeal;
-            @DoAction.started -= instance.OnDoAction;
-            @DoAction.performed -= instance.OnDoAction;
-            @DoAction.canceled -= instance.OnDoAction;
+            @DoActionPress.started -= instance.OnDoActionPress;
+            @DoActionPress.performed -= instance.OnDoActionPress;
+            @DoActionPress.canceled -= instance.OnDoActionPress;
+            @DoActionRelease.started -= instance.OnDoActionRelease;
+            @DoActionRelease.performed -= instance.OnDoActionRelease;
+            @DoActionRelease.canceled -= instance.OnDoActionRelease;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1229,7 +1258,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnTwistAttack(InputAction.CallbackContext context);
         void OnTwistDefend(InputAction.CallbackContext context);
         void OnTwistHeal(InputAction.CallbackContext context);
-        void OnDoAction(InputAction.CallbackContext context);
+        void OnDoActionPress(InputAction.CallbackContext context);
+        void OnDoActionRelease(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

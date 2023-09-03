@@ -1,0 +1,820 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d0878fa1be1f546a2a65661326a877, type: 3}
+  m_Name: FindKey
+  m_EditorClassIdentifier: 
+  TableName: FindKey
+  Rules:
+  - rid: 669309055316263200
+  - rid: 669309055316263201
+  - rid: 669309055316263202
+  - rid: 669309055316263203
+  - rid: 669309055316263204
+  - rid: 669309055316263205
+  - rid: 669309055316263206
+  - rid: 669309055316263207
+  - rid: 669309055316263208
+  - rid: 669309055316263209
+  - rid: 669309055316263210
+  - rid: 669309055316263211
+  - rid: 669309055316263212
+  - rid: 669309055316263213
+  - rid: 669309055316263214
+  - rid: 669309055316263215
+  - rid: 669309055316263216
+  - rid: 669309055316263217
+  - rid: 669309055316263218
+  - rid: 669309055316263219
+  - rid: 669309055316263220
+  - rid: 669309055316263221
+  - rid: 669309055316263222
+  - rid: 669309055316263223
+  - rid: 669309055316263224
+  - rid: 669309055316263225
+  Facts:
+  - rid: 669309055316263190
+  - rid: 669309055316263191
+  - rid: 669309055316263192
+  - rid: 669309055316263193
+  - rid: 669309055316263194
+  - rid: 669309055316263196
+  Events:
+  - rid: 669309055316263195
+  - rid: 669309055316263197
+  - rid: 669309055316263198
+  - rid: 669309055316263199
+  references:
+    version: 2
+    RefIds:
+    - rid: 669309055316263190
+      type: {class: SpeakerEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303159
+        Key: skeleton_2a_searching
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        DisplayName: Searching Skeleton
+    - rid: 669309055316263191
+      type: {class: SpeakerEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303160
+        Key: skeleton_2b_frantic
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        DisplayName: Frantic Skeleton
+    - rid: 669309055316263192
+      type: {class: SpeakerEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303161
+        Key: skeleton_2c_serious
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        DisplayName: Serious Skeleton
+    - rid: 669309055316263193
+      type: {class: FactEntry, ns: Aarthificial.Typewriter.Entries, asm: Aarthificial.Typewriter}
+      data:
+        ID: 303162
+        Key: is_keyFound
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+    - rid: 669309055316263194
+      type: {class: FactEntry, ns: Aarthificial.Typewriter.Entries, asm: Aarthificial.Typewriter}
+      data:
+        ID: 303163
+        Key: is_doorOpen
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+    - rid: 669309055316263195
+      type: {class: EventEntry, ns: Aarthificial.Typewriter.Entries, asm: Aarthificial.Typewriter}
+      data:
+        ID: 303164
+        Key: on_searchingForKey
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria:
+        - FactReference:
+            InternalID: 303165
+          Min: 1
+          Max: 1
+          Operation: 0
+        Modifications: []
+    - rid: 669309055316263196
+      type: {class: FactEntry, ns: Aarthificial.Typewriter.Entries, asm: Aarthificial.Typewriter}
+      data:
+        ID: 303165
+        Key: near_skeleton2
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+    - rid: 669309055316263197
+      type: {class: DecisionEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303166
+        Key: on_searchingForKey_noKey
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List:
+          - InternalID: 303164
+        Once: 0
+        Padding: 0
+        Criteria:
+        - FactReference:
+            InternalID: 303162
+          Min: 0
+          Max: 0
+          Operation: 0
+        Modifications: []
+        cancelWhenLeavesArea: 1
+        areaFlag:
+          InternalID: 303165
+    - rid: 669309055316263198
+      type: {class: DecisionEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303167
+        Key: on_searchingForKey_foundKey
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List:
+          - InternalID: 303164
+        Once: 0
+        Padding: 0
+        Criteria:
+        - FactReference:
+            InternalID: 303162
+          Min: 1
+          Max: 1
+          Operation: 0
+        - FactReference:
+            InternalID: 303163
+          Min: 0
+          Max: 0
+          Operation: 0
+        Modifications: []
+        cancelWhenLeavesArea: 1
+        areaFlag:
+          InternalID: 303165
+    - rid: 669309055316263199
+      type: {class: DecisionEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303168
+        Key: on_searchingForKey_doorOpen
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List:
+          - InternalID: 303164
+        Once: 0
+        Padding: 0
+        Criteria:
+        - FactReference:
+            InternalID: 303162
+          Min: 1
+          Max: 1
+          Operation: 0
+        - FactReference:
+            InternalID: 303163
+          Min: 1
+          Max: 1
+          Operation: 0
+        Modifications: []
+        cancelWhenLeavesArea: 1
+        areaFlag:
+          InternalID: 303165
+    - rid: 669309055316263200
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303169
+        Key: key_none_1
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303166
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Hey, did you hear? Someone put the key on THIS side of the door! Now
+          how's the hero gonna unlock it?
+        _speaker:
+          InternalID: 303159
+    - rid: 669309055316263201
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303170
+        Key: key_none_2
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303169
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Oh great, that's just bone-headed! We had ONE job, folks. One job!
+        _speaker:
+          InternalID: 303160
+    - rid: 669309055316263202
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303171
+        Key: key_none_3
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303170
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Can't the Hero just kick door down?
+        _speaker:
+          InternalID: 303161
+    - rid: 669309055316263203
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303172
+        Key: key_none_4
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303171
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Well, they can't kick down enchanted doors! That's the whole point
+          of them!
+        _speaker:
+          InternalID: 303160
+    - rid: 669309055316263204
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303173
+        Key: key_none_5
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303172
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Has anyone seen the key? We need to fix this mess.
+        _speaker:
+          InternalID: 303159
+    - rid: 669309055316263205
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303174
+        Key: key_none_6
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303173
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Maybe one of the slimes ate it? They eat anything!
+        _speaker:
+          InternalID: 303161
+    - rid: 669309055316263206
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303175
+        Key: key_none_7
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303174
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: "Well, if we don't find that key, we will be the ones eaten\u2014by
+          the boss!"
+        _speaker:
+          InternalID: 303160
+    - rid: 669309055316263207
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303176
+        Key: key_none_8
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303175
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: We could always... make a new key?
+        _speaker:
+          InternalID: 303161
+    - rid: 669309055316263208
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303177
+        Key: key_none_9
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303176
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: And how do you propose we do that? It's not like we have a key-making
+          kit lying around.
+        _speaker:
+          InternalID: 303160
+    - rid: 669309055316263209
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303178
+        Key: key_none_10
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303177
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Well, we better figure something out soon, or we'll all be demoted
+          to floor scrubbers!
+        _speaker:
+          InternalID: 303159
+    - rid: 669309055316263210
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303179
+        Key: key_found_1
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303167
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Hey, isn't that the slime from the end of the dungeon?
+        _speaker:
+          InternalID: 303159
+    - rid: 669309055316263211
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303180
+        Key: key_found_2
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303179
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Yeah, and it looks like it's holding something... is that the key?!
+        _speaker:
+          InternalID: 303161
+    - rid: 669309055316263212
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303181
+        Key: key_found_3
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303180
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Hey, Slime! Over here! You've got the key! Some bonehead- no offense,
+          guys- left the key on this side, and now the hero can't get in!
+        _speaker:
+          InternalID: 303160
+    - rid: 669309055316263213
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303182
+        Key: key_found_4
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303181
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Yeah, could you please unlock this door, roll to the other side, and
+          then lock it again?
+        _speaker:
+          InternalID: 303161
+    - rid: 669309055316263214
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303183
+        Key: key_found_5
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303182
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: And make sure to leave the key somewhere really obvious. Like, hero-level
+          obvious.
+        _speaker:
+          InternalID: 303159
+    - rid: 669309055316263215
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303184
+        Key: key_found_6
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303183
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Yeah, maybe on top of a conspicuously illuminated pedestal or something.
+        _speaker:
+          InternalID: 303161
+    - rid: 669309055316263216
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303185
+        Key: key_found_7
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303184
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Anyway, hurry up and do the thing. If the boss finds out we messed
+          up this badly, he's going to have our skulls... again.
+        _speaker:
+          InternalID: 303160
+    - rid: 669309055316263217
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303186
+        Key: key_open_1
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303168
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Great job unlocking the door, buddy! Now, roll to the other side and
+          lock it again!
+        _speaker:
+          InternalID: 303161
+    - rid: 669309055316263218
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303187
+        Key: key_open_2
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303186
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: And don't forget to leave the key somewhere really obvious for the
+          hero!
+        _speaker:
+          InternalID: 303160
+    - rid: 669309055316263219
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303188
+        Key: key_open_3
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303187
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Yeah, like on a table with a giant flashing arrow pointing at it. We
+          can't take any chances.
+        _speaker:
+          InternalID: 303159
+    - rid: 669309055316263220
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303189
+        Key: key_open_4
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303188
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Oh, and maybe put a sign next to it that says 'Definitely Not A Trap'.
+        _speaker:
+          InternalID: 303161
+    - rid: 669309055316263221
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303190
+        Key: key_open_5
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303189
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Honestly, at this point, I wouldn't be surprised if the hero just smashed
+          through a wall instead of using the key.
+        _speaker:
+          InternalID: 303160
+    - rid: 669309055316263222
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303191
+        Key: key_open_6
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303190
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: You're not wrong. Remember that time the hero brought a battering ram
+          to a sword fight?
+        _speaker:
+          InternalID: 303161
+    - rid: 669309055316263223
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303192
+        Key: key_open_7
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303191
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: Oh yeah, that was hilarious. Took us weeks to fix that wall.
+        _speaker:
+          InternalID: 303159
+    - rid: 669309055316263224
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303193
+        Key: key_open_8
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303192
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: '"Anyway, focus, Slime! Roll to the other side, lock the door, and
+          leave the key out!'
+        _speaker:
+          InternalID: 303161
+    - rid: 669309055316263225
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303194
+        Key: key_open_9
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303193
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: And make it snappy! The boss is going to be doing his rounds soon,
+          and we don't want to be caught... dead? ... Again? You know what I mean!
+        _speaker:
+          InternalID: 303160

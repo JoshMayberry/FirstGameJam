@@ -138,7 +138,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
+        y: 64
         width: 80
         height: 32
       alignment: 0
@@ -159,18 +159,39 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 32
         width: 80
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 17, y: 14, z: 20, w: 16}
+      border: {x: 16, y: 14, z: 20, w: 16}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 910a7e46c3188734f82103d675c9a7e7
       internalID: -961292555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialog_boxes_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 80
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 18, y: 14, z: 20, w: 16}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f4b7f99b7bebb845bcb8148908821c1
+      internalID: -1261710136
       vertices: []
       indices: 
       edges: []
@@ -188,6 +209,7 @@ TextureImporter:
     nameFileIdTable:
       dialog_boxes_0: -138816251824917157
       dialog_boxes_1: -961292555
+      dialog_boxes_2: -1261710136
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

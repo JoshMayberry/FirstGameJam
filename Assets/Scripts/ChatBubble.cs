@@ -1,14 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Aarthificial.Typewriter;
 using Aarthificial.Typewriter.References;
 using Aarthificial.Typewriter.Tools;
-using UnityEditor.PackageManager;
 using Aarthificial.Typewriter.Entries;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
-using UnityEngine.InputSystem.LowLevel;
 
 // Use: https://www.youtube.com/watch?v=K13WnNL1OYM
 public class ChatBubble : MonoBehaviour {
@@ -30,17 +25,29 @@ public class ChatBubble : MonoBehaviour {
 
 	[SerializeField] private float charsPerSecond = 32f;
 
-	private float startTime;
+    [Readonly] public float startTime;
 	private DialogueEntry currentEntry;
 	private ITypewriterContext currentContext;
 	private Speaker currentSpeaker;
-	private bool isActive;
-	private bool isTextCompleted;
-	private bool isLastDialog;
-	private Vector3 initialPosition;
+    [Readonly] public bool isActive;
+	[Readonly] public bool isTextCompleted;
+	[Readonly] public bool isLastDialog;
+	[SerializeField] internal bool isPersonal = false;
+	[SerializeField] internal bool isSoftResetAfterConversation = false;
 
+    private bool isCancelWhenLeavesArea;
+    private FactEntry areaFlag;
 
 	private void Awake() {
+		this.UpdateReferences();
+	}
+
+	private void Start() {
+		this.container.transform.localPosition = Vector3.zero;
+		DialogManager.instance.SetBubbleActive(this, !this.isPersonal);
+	}
+
+	private void UpdateReferences() {
 		this.container = this.transform.Find("Contents").gameObject;
 		this.backgroundSpriteRenderer = this.container.transform.Find("Background").GetComponent<SpriteRenderer>();
 		this.iconSpriteRenderer = this.container.transform.Find("Icon").GetComponent<SpriteRenderer>();
@@ -51,53 +58,58 @@ public class ChatBubble : MonoBehaviour {
 		this.factCollider.enabled = this.isColliderEnabled;
 	}
 
-	private void Start() {
-		this.container.transform.localPosition = Vector3.zero;
-		DialogManager.instance.SetBubbleActive(this);
-	}
-
 	private void Update() {
 		if (this.isTextCompleted) {
-            if (!this.isActive) {
-				return;
-            }
-
-            if (this.isLastDialog) {
-				if (DialogManager.instance.isTalkPressed) {
-					DialogManager.instance.isTalkPressed = false;
-					this.Finish();
-                }
-
-                return;
-            }
-
-            if (this.currentEntry == null) {
+			if (!this.isActive) {
+				// TODO: Should we deactivate the chat bubble here?
 				return;
 			}
 
-			if (DialogManager.instance.isTalkPressed) {
-				DialogManager.instance.isTalkPressed = false;
-				this.typewriterContext.TryInvoke(this.currentEntry);
-				return;
-            }
+			if (this.isLastDialog) {
+				if (DialogManager.instance.isTalkPressed) {
+					DialogManager.instance.isTalkPressed = false;
+					this.Finish();
+					return;
+				}
+			}
+			else {
+                if (this.currentEntry == null) {
+                    return;
+                }
 
-			// Account for canceling
-			if (!this.typewriterContext.WouldInvoke(this.currentEntry)) {
+                if (DialogManager.instance.isTalkPressed) {
+                    DialogManager.instance.isTalkPressed = false;
+                    this.typewriterContext.TryInvoke(this.currentEntry);
+                    return;
+                }
+
+                // Account for canceling
+                if (!this.typewriterContext.WouldInvoke(this.currentEntry)) {
+					this.Cancel();
+					return;
+				}
+			}
+
+            // Allows dialogs to not need the area reference on every single one
+            if (this.isCancelWhenLeavesArea && (this.currentContext.Get(this.areaFlag) == 0)) {
 				this.Cancel();
-            }
+				return;
+			}
+
 			return;
-        }
+		}
 
 		if (!this.isActive) {
 			// Account for another chat being in progress
 			if (DialogManager.instance.isChatInProgress) {
 				this.UpdateIcon(false);
-				return;
+                return;
 			}
 
 			if ((this.currentEvent != null) && this.typewriterWatcher.ShouldUpdate()) {
 				this.UpdateIcon(this.typewriterContext.WouldInvoke(this.currentEvent));
-			}
+				return;
+            }
 
 			if (this.iconSpriteRenderer.gameObject.activeSelf && DialogManager.instance.isTalkPressed) {
 				this.TriggerEvent();
@@ -108,7 +120,7 @@ public class ChatBubble : MonoBehaviour {
 		if (DialogManager.instance.isTalkPressed) {
 			DialogManager.instance.isTalkPressed = false;
 			if (!this.isTextCompleted) {
-                this.Proceed();
+				this.Proceed();
 				return;
 			}
 			this.Finish();
@@ -138,7 +150,7 @@ public class ChatBubble : MonoBehaviour {
 	}
 
 	private void UpdateSpeaker(Speaker newSpeaker = null) {
-		string speakerName = "";
+        string speakerName = "";
 		if (newSpeaker == null) {
 			speakerName = currentEntry.Speaker.DisplayName;
 			newSpeaker = TypewriterEvents.instance.LookupSpeaker(currentEntry);
@@ -152,7 +164,7 @@ public class ChatBubble : MonoBehaviour {
 			}
 		}
 
-		this.speakerText.text = speakerName;
+        this.speakerText.text = speakerName;
 		this.speakerText.ForceMeshUpdate(); // Ensure text renders this frame so we can get the size
 
 		if (this.currentSpeaker?.speakerType != newSpeaker.speakerType) {
@@ -228,30 +240,41 @@ public class ChatBubble : MonoBehaviour {
 	}
 
 	public void SetEvent(EntryReference myEvent, Transform newPosition = null) {
-		this.DoReset(newPosition);
+		this.DoHardReset(newPosition);
 		this.currentEvent = myEvent;
 	}
 
-	public void DoReset(Transform newPosition = null) {
+	public void DoHardReset(Transform newPosition = null) {
 		if (newPosition != null) {
 			this.transform.position = newPosition.position;
 		}
 
-		this.currentEntry = null;
-		this.currentContext = null;
-		this.currentSpeaker = null;
-		this.isTextCompleted = false;
-		this.isLastDialog = false;
-		this.container.transform.localPosition = Vector3.zero;
-		this.iconSpriteRenderer.gameObject.transform.localPosition = Vector3.zero;
-		this.iconSpriteRenderer.gameObject.SetActive(true);
-		this.backgroundSpriteRenderer.gameObject.SetActive(false);
-		this.speakerText.gameObject.SetActive(false);
-		this.dialogText.gameObject.SetActive(false);
-		this.factCollider.enabled = this.isColliderEnabled;
-	}
+		this.currentEvent = TypewriterEvents.instance.event_nothing;
+		this.DoSoftReset();
+    }
+    public void DoSoftReset(Transform newPosition = null) {
+        if (newPosition != null) {
+            this.transform.position = newPosition.position;
+        }
+       
+        this.isActive = false;
+        this.currentContext = null;
+        this.currentSpeaker = null;
+        this.isTextCompleted = false;
+        this.isLastDialog = false;
+		this.areaFlag = null;
+		this.isCancelWhenLeavesArea = false;
 
-	internal void HandleTypewriterEvent(BaseEntry entry, ITypewriterContext context) {
+        this.container.transform.localPosition = Vector3.zero;
+        this.iconSpriteRenderer.gameObject.transform.localPosition = Vector3.zero;
+        this.iconSpriteRenderer.gameObject.SetActive(true);
+        this.backgroundSpriteRenderer.gameObject.SetActive(false);
+        this.speakerText.gameObject.SetActive(false);
+        this.dialogText.gameObject.SetActive(false);
+        this.factCollider.enabled = this.isColliderEnabled;
+    }
+
+    internal void HandleTypewriterEvent(BaseEntry entry, ITypewriterContext context) {
 		//if (this.isActive) {
 		//	return;
 		//}
@@ -259,26 +282,30 @@ public class ChatBubble : MonoBehaviour {
 		if (entry is DialogueEntry textEntry) {
 			this.currentEntry = textEntry;
 			this.currentContext = context;
+
 			this.Begin();
 			return;
 		}
 
-		if (entry is EventEntry eventEntry) {
-			context.TryInvoke(eventEntry);
-			return;
-		}
-
 		if (entry is DecisionEntry decisionEntry) {
-			context.TryInvoke(decisionEntry);
-			return;
+			this.isCancelWhenLeavesArea = decisionEntry.cancelWhenLeavesArea;
+			this.areaFlag = (FactEntry)decisionEntry.areaFlag.GetEntry();
+            context.TryInvoke(decisionEntry);
+            return;
 		}
 
 		if (entry is TriggerEntry triggerEntry) {
 			context.TryInvoke(triggerEntry);
 			return;
-		}
+        }
 
-		throw new System.Exception("Unknown enrty type for '" + entry + "'");
+        if (entry is EventEntry eventEntry) {
+            this.isCancelWhenLeavesArea = false;
+            context.TryInvoke(eventEntry);
+            return;
+        }
+
+        throw new System.Exception("Unknown enrty type for '" + entry + "'");
 	}
 
 	private void Begin() {
@@ -288,7 +315,7 @@ public class ChatBubble : MonoBehaviour {
 		this.isTextCompleted = false;
 		this.isLastDialog = !currentContext.HasMatchingRule(currentEntry.ID);
 
-        this.backgroundSpriteRenderer.gameObject.SetActive(true);
+		this.backgroundSpriteRenderer.gameObject.SetActive(true);
 		this.speakerText.gameObject.SetActive(true);
 		this.dialogText.gameObject.SetActive(true);
 
@@ -301,7 +328,7 @@ public class ChatBubble : MonoBehaviour {
 	}
 
 	private void Finish(DialogueEntry next = null) {
-        DialogManager.instance.isPlayerLocked = false;
+		DialogManager.instance.isPlayerLocked = false;
 		var entry = this.currentEntry;
 		var context = this.currentContext;
 
@@ -317,37 +344,36 @@ public class ChatBubble : MonoBehaviour {
 
 		if (this.currentEntry == null) {
 			this.FinishForGood();
-        }
+		}
 	}
 
 	private void Cancel() {
 		DialogManager.instance.isPlayerLocked = false;
 		DialogManager.instance.CurrentChatFinished(this);
-		this.isActive = false;
-		this.isTextCompleted = false;
-        this.isLastDialog = false;
-		this.container.transform.localPosition = Vector3.zero;
-        this.iconSpriteRenderer.gameObject.transform.localPosition = Vector3.zero;
-		this.iconSpriteRenderer.gameObject.SetActive(true);
-
-		this.backgroundSpriteRenderer.gameObject.SetActive(false);
-		this.speakerText.gameObject.SetActive(false);
-		this.dialogText.gameObject.SetActive(false);
+		
+		this.DoSoftReset();
 	}
 
 	private void FinishForGood() {
 		DialogManager.instance.CurrentChatFinished(this);
+
         this.isActive = false;
-		this.isTextCompleted = true;
-        this.isLastDialog = false;
-		this.backgroundSpriteRenderer.gameObject.SetActive(false);
-        this.iconSpriteRenderer.gameObject.SetActive(false);
-		this.speakerText.gameObject.SetActive(false);
-		this.dialogText.gameObject.SetActive(false);
-		DialogManager.instance.SetBubbleActive(this, false);
-	}
+
+        this.DoSoftReset();
+
+        if (!this.isSoftResetAfterConversation) {
+            this.isTextCompleted = true;
+            this.iconSpriteRenderer.gameObject.SetActive(false);
+            DialogManager.instance.SetBubbleActive(this, false);
+        }
+    }
 
 	public void TriggerEvent() {
+		if (this.currentEvent == TypewriterEvents.instance.event_nothing) {
+			return;
+		}
+
+		this.isCancelWhenLeavesArea = false;
 		DialogManager.instance.SetCurrentChat(this);
 		this.typewriterContext.TryInvoke(this.currentEvent);
 	}

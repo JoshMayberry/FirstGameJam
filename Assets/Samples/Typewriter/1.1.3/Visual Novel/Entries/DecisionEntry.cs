@@ -13,5 +13,6 @@ using UnityEngine.Assertions;
 /// </remarks>
 [Serializable]
 public class DecisionEntry : EventEntry {
-  
+    public bool cancelWhenLeavesArea;
+    public EntryReference areaFlag;
 }

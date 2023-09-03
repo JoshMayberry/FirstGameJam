@@ -1,27 +1,15 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Aarthificial.Typewriter;
 using Aarthificial.Typewriter.References;
-using Aarthificial.Typewriter.Tools;
 using Aarthificial.Typewriter.Blackboards;
 using Aarthificial.Typewriter.Entries;
 
-//public enum FactBoolean {
-//	None,
-//	NearSkeleton1
-//}
-
-//public enum FactInteger {
-//	None,
-//	MoveCount,
-//    TwistCount
-//}
-
 public enum SpeakerType {
     Skeleton = 0,
-    Slime = 1
+    Slime = 1,
+	System = 2
 }
 
 public enum ChatBubbleAlignment {
@@ -52,14 +40,19 @@ public class SpeakerLookup : ScriptableObject {
 public class TypewriterEvents : MonoBehaviour {
     [SerializeField] internal SpeakerLookup speakerLookup;
 
+    [field: Header("Speakers")]
+    [field: SerializeField] public EntryReference speaker_nothing { get; private set; }
+
     [field: Header("Facts")]
 	[field: SerializeField] public EntryReference fact_nearSkeleton1 { get; private set; }
 	[field: SerializeField] public EntryReference fact_moveCount { get; private set; }
-	[field: SerializeField] public EntryReference fact_twistCount { get; private set; }
+    [field: SerializeField] public EntryReference fact_twistCount { get; private set; }
+    [field: SerializeField] public EntryReference fact_actCount { get; private set; }
 
-	[field: Header("Events")]
+    [field: Header("Events")]
+	[field: SerializeField] public EntryReference event_nothing { get; private set; }
 	[field: SerializeField] public EntryReference event_onLevelStart { get; private set; }
-	[field: SerializeField] public EntryReference event_onTellPlayerToMove { get; private set; }
+    [field: SerializeField] public EntryReference event_onTellPlayerToMove { get; private set; }
 
 	//[field: Header("Triggers")]
 	//[field: SerializeField] public EntryReference trigger_updateNearSkeleton1_true { get; private set; }

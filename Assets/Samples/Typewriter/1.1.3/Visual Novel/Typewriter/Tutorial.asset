@@ -15,6 +15,8 @@ MonoBehaviour:
   TableName: Tutorial
   Rules:
   - rid: 669309055316263141
+  - rid: 669309080621809752
+  - rid: 669309080621809753
   - rid: 669309055316262983
   - rid: 669309055316262984
   - rid: 669309055316263001
@@ -37,6 +39,7 @@ MonoBehaviour:
   Facts:
   - rid: 669309055316262980
   - rid: 669309055316262981
+  - rid: 669309080621809681
   - rid: 669309055316263002
   - rid: 669309055316263003
   - rid: 669309055316263010
@@ -98,7 +101,7 @@ MonoBehaviour:
           InternalID: 0
         Triggers:
           List:
-          - InternalID: 303158
+          - InternalID: 303213
         Once: 0
         Padding: 0
         Criteria: []
@@ -169,11 +172,6 @@ MonoBehaviour:
         Padding: 0
         Criteria:
         - FactReference:
-            InternalID: 303138
-          Min: 1
-          Max: 1
-          Operation: 0
-        - FactReference:
             InternalID: 303155
           Min: 1
           Max: 1
@@ -200,7 +198,7 @@ MonoBehaviour:
         Padding: 0
         Criteria: []
         Modifications: []
-        DisplayName: Bill
+        DisplayName: Gossiping Skeleton
     - rid: 669309055316263003
       type: {class: SpeakerEntry, ns: , asm: Assembly-CSharp}
       data:
@@ -214,7 +212,7 @@ MonoBehaviour:
         Padding: 0
         Criteria: []
         Modifications: []
-        DisplayName: Frank
+        DisplayName: Listening Skeleton
     - rid: 669309055316263004
       type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
       data:
@@ -227,12 +225,7 @@ MonoBehaviour:
           - InternalID: 303157
         Once: 0
         Padding: 0
-        Criteria:
-        - FactReference:
-            InternalID: 303138
-          Min: 1
-          Max: 1
-          Operation: 0
+        Criteria: []
         Modifications: []
         OnApply: []
         OnInvoke: []
@@ -255,12 +248,7 @@ MonoBehaviour:
           - InternalID: 303132
         Once: 0
         Padding: 0
-        Criteria:
-        - FactReference:
-            InternalID: 303138
-          Min: 1
-          Max: 1
-          Operation: 0
+        Criteria: []
         Modifications: []
         OnApply: []
         OnInvoke: []
@@ -283,12 +271,7 @@ MonoBehaviour:
           - InternalID: 303133
         Once: 0
         Padding: 0
-        Criteria:
-        - FactReference:
-            InternalID: 303138
-          Min: 1
-          Max: 1
-          Operation: 0
+        Criteria: []
         Modifications: []
         OnApply: []
         OnInvoke: []
@@ -311,12 +294,7 @@ MonoBehaviour:
           - InternalID: 303134
         Once: 0
         Padding: 0
-        Criteria:
-        - FactReference:
-            InternalID: 303138
-          Min: 1
-          Max: 1
-          Operation: 0
+        Criteria: []
         Modifications: []
         OnApply: []
         OnInvoke: []
@@ -339,12 +317,7 @@ MonoBehaviour:
           - InternalID: 303135
         Once: 0
         Padding: 0
-        Criteria:
-        - FactReference:
-            InternalID: 303138
-          Min: 1
-          Max: 1
-          Operation: 0
+        Criteria: []
         Modifications: []
         OnApply: []
         OnInvoke: []
@@ -366,12 +339,7 @@ MonoBehaviour:
           - InternalID: 303136
         Once: 0
         Padding: 0
-        Criteria:
-        - FactReference:
-            InternalID: 303138
-          Min: 1
-          Max: 1
-          Operation: 0
+        Criteria: []
         Modifications: []
         OnApply: []
         OnInvoke: []
@@ -413,6 +381,9 @@ MonoBehaviour:
           Max: 10
           Operation: 3
         Modifications: []
+        cancelWhenLeavesArea: 1
+        areaFlag:
+          InternalID: 303138
     - rid: 669309055316263086
       type: {class: DecisionEntry, ns: , asm: Assembly-CSharp}
       data:
@@ -432,6 +403,9 @@ MonoBehaviour:
           Max: 2147483647
           Operation: 2
         Modifications: []
+        cancelWhenLeavesArea: 1
+        areaFlag:
+          InternalID: 303138
     - rid: 669309055316263087
       type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
       data:
@@ -444,12 +418,7 @@ MonoBehaviour:
           - InternalID: 303144
         Once: 0
         Padding: 0
-        Criteria:
-        - FactReference:
-            InternalID: 303138
-          Min: 1
-          Max: 1
-          Operation: 0
+        Criteria: []
         Modifications: []
         OnApply: []
         OnInvoke: []
@@ -471,12 +440,7 @@ MonoBehaviour:
           - InternalID: 303145
         Once: 0
         Padding: 0
-        Criteria:
-        - FactReference:
-            InternalID: 303138
-          Min: 1
-          Max: 1
-          Operation: 0
+        Criteria: []
         Modifications: []
         OnApply: []
         OnInvoke: []
@@ -499,12 +463,7 @@ MonoBehaviour:
           - InternalID: 303146
         Once: 0
         Padding: 0
-        Criteria:
-        - FactReference:
-            InternalID: 303138
-          Min: 1
-          Max: 1
-          Operation: 0
+        Criteria: []
         Modifications: []
         OnApply: []
         OnInvoke: []
@@ -526,12 +485,7 @@ MonoBehaviour:
           - InternalID: 303147
         Once: 0
         Padding: 0
-        Criteria:
-        - FactReference:
-            InternalID: 303138
-          Min: 1
-          Max: 1
-          Operation: 0
+        Criteria: []
         Modifications: []
         OnApply: []
         OnInvoke: []
@@ -554,12 +508,7 @@ MonoBehaviour:
           - InternalID: 303148
         Once: 0
         Padding: 0
-        Criteria:
-        - FactReference:
-            InternalID: 303138
-          Min: 1
-          Max: 1
-          Operation: 0
+        Criteria: []
         Modifications: []
         OnApply: []
         OnInvoke: []
@@ -582,12 +531,7 @@ MonoBehaviour:
           - InternalID: 303149
         Once: 0
         Padding: 0
-        Criteria:
-        - FactReference:
-            InternalID: 303138
-          Min: 1
-          Max: 1
-          Operation: 0
+        Criteria: []
         Modifications: []
         OnApply: []
         OnInvoke: []
@@ -609,12 +553,7 @@ MonoBehaviour:
           - InternalID: 303150
         Once: 0
         Padding: 0
-        Criteria:
-        - FactReference:
-            InternalID: 303138
-          Min: 1
-          Max: 1
-          Operation: 0
+        Criteria: []
         Modifications: []
         OnApply: []
         OnInvoke: []
@@ -637,12 +576,7 @@ MonoBehaviour:
           - InternalID: 303151
         Once: 0
         Padding: 0
-        Criteria:
-        - FactReference:
-            InternalID: 303138
-          Min: 1
-          Max: 1
-          Operation: 0
+        Criteria: []
         Modifications: []
         OnApply: []
         OnInvoke: []
@@ -665,12 +599,7 @@ MonoBehaviour:
           - InternalID: 303152
         Once: 0
         Padding: 0
-        Criteria:
-        - FactReference:
-            InternalID: 303138
-          Min: 1
-          Max: 1
-          Operation: 0
+        Criteria: []
         Modifications: []
         OnApply: []
         OnInvoke: []
@@ -720,12 +649,7 @@ MonoBehaviour:
           - InternalID: 303129
         Once: 0
         Padding: 0
-        Criteria:
-        - FactReference:
-            InternalID: 303138
-          Min: 1
-          Max: 1
-          Operation: 0
+        Criteria: []
         Modifications:
         - FactReference:
             InternalID: 303155
@@ -743,7 +667,7 @@ MonoBehaviour:
       type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
       data:
         ID: 303158
-        Key: start_0
+        Key: start_0a
         Scope:
           InternalID: 0
         Triggers:
@@ -760,4 +684,61 @@ MonoBehaviour:
         IsPlayerLocked: 1
         Text: (Press E to Continue Dialog and Start new dialogs)
         _speaker:
-          InternalID: 303113
+          InternalID: 303216
+    - rid: 669309080621809681
+      type: {class: FactEntry, ns: Aarthificial.Typewriter.Entries, asm: Aarthificial.Typewriter}
+      data:
+        ID: 303211
+        Key: actionCount
+        Scope:
+          InternalID: 1388552
+        Triggers:
+          List: []
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+    - rid: 669309080621809752
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303213
+        Key: start_0b
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303158
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 1
+        Text: (Dialogs can change based on your actions)
+        _speaker:
+          InternalID: 303216
+    - rid: 669309080621809753
+      type: {class: DialogueEntry, ns: , asm: Assembly-CSharp}
+      data:
+        ID: 303214
+        Key: start_0c
+        Scope:
+          InternalID: 0
+        Triggers:
+          List:
+          - InternalID: 303153
+        Once: 0
+        Padding: 0
+        Criteria: []
+        Modifications: []
+        OnApply: []
+        OnInvoke: []
+        Speed: 1
+        IsChoice: 0
+        IsPlayerLocked: 0
+        Text: (Besides this dialog- you can move around during dialogs)
+        _speaker:
+          InternalID: 303216
