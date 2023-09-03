@@ -24,21 +24,8 @@ public enum ChatBubbleAlignment {
     Center
 }
 
-[CreateAssetMenu(fileName = "SpeakerLookup", menuName = "ScriptableObjects/SpeakerLookup", order = 1)]
-public class SpeakerLookup : ScriptableObject {
-    //[System.Serializable]
-    //public class Entry {
-    //    public EntryReference speakerReference;
-    //    public GameObject speakerObject;
-    //}
-
-    //public List<Entry> entries;
-
-    public Dictionary<int, Speaker> Speakers = new Dictionary<int, Speaker>();
-}
-
 public class TypewriterEvents : MonoBehaviour {
-    [SerializeField] internal SpeakerLookup speakerLookup;
+	[SerializeField] internal Dictionary<int, Speaker> speakerLookup;
 
     [field: Header("Speakers")]
     [field: SerializeField] public EntryReference speaker_nothing { get; private set; }
@@ -70,7 +57,8 @@ public class TypewriterEvents : MonoBehaviour {
 		}
 
 		instance = this;
-	}
+		this.speakerLookup = new Dictionary<int, Speaker>();
+    }
 
 	private void Update() {
 		this.lastUpdateMoveCount -= Time.deltaTime;
@@ -144,7 +132,7 @@ public class TypewriterEvents : MonoBehaviour {
     }
 
     public Speaker LookupSpeaker(DialogueEntry currentEntry) {
-		return this.speakerLookup.Speakers[currentEntry.Speaker.ID];
+		return this.speakerLookup[currentEntry.Speaker.ID];
 	}
 }
 

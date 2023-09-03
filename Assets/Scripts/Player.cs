@@ -252,15 +252,15 @@ public class Player : Speaker {
             case AnimationState.MoveDown:
             case AnimationState.MoveLeft:
             case AnimationState.MoveRight:
-                AudioManager.instance.PlayOneShot(FmodEvents.instance.moveSound, this.gameObject.transform.position);
+                AudioManager.instance.PlayOneShot("moveSound", FmodEvents.instance.moveSound, this.gameObject.transform.position);
                 break;
 
             case AnimationState.TwistIn:
-                AudioManager.instance.PlayOneShot(FmodEvents.instance.twistSound, this.gameObject.transform.position);
+                AudioManager.instance.PlayOneShot("twistSound", FmodEvents.instance.twistSound, this.gameObject.transform.position);
                 break;
 
             case AnimationState.Hurt:
-                AudioManager.instance.PlayOneShot(FmodEvents.instance.hurtSound, this.gameObject.transform.position);
+                AudioManager.instance.PlayOneShot("hurtSound", FmodEvents.instance.hurtSound, this.gameObject.transform.position);
                 break;
 
             case AnimationState.ActionStarting:

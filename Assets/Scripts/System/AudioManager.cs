@@ -39,6 +39,16 @@ public class AudioManager : MonoBehaviour {
     [SerializeField] private Slider ambianceSlider;
     [SerializeField] private Slider sfxSlider;
 
+    [Header("WebGLOnly")]
+    public bool isWebGl;
+    public AudioClip music;
+    public AudioClip[] sfxMove;
+    public AudioClip[] sfxTwist;
+    public AudioClip[] sfxTalk;
+    //public AudioClip[] sfxHurt;
+    private AudioSource audioSource;
+    public GameObject musicVolumeButton;
+
     // Make this a singleton
     // See: https://youtu.be/rcBHIOjZDpk?t=1007
     public static AudioManager instance { get; private set; }
@@ -49,8 +59,23 @@ public class AudioManager : MonoBehaviour {
 
         instance = this;
 
+#if UNITY_WEBGL
+        // WebGL is not playing nice with FMOD right now...
+        this.isWebGl = true;
+#endif
+
         this.eventInstances = new List<EventInstance>();
         this.eventEmitters = new List<StudioEventEmitter>();
+
+        this.audioSource = this.GetComponent<AudioSource>();
+
+        if (this.isWebGl) {
+            this.audioSource.enabled = true;
+            this.musicVolumeButton.SetActive(false);
+            return;
+        }
+
+        this.audioSource.enabled = false;
 
         this.masterBus = RuntimeManager.GetBus("bus:/");
         this.musicBus = RuntimeManager.GetBus("bus:/Music");
@@ -69,22 +94,37 @@ public class AudioManager : MonoBehaviour {
     }
 
     public void OnMasterVolumeChanged() {
+        if (this.isWebGl) {
+            return;
+        }
         this.masterBus.setVolume(this.masterSlider.value);
     }
 
     public void OnMusicVolumeChanged() {
+        if (this.isWebGl) {
+            return;
+        }
         this.musicBus.setVolume(this.musicSlider.value);
     }
 
     public void OnAmbianceVolumeChanged() {
+        if (this.isWebGl) {
+            return;
+        }
         this.ambianceBus.setVolume(this.ambianceSlider.value);
     }
 
     public void OnSfxVolumeChanged() {
+        if (this.isWebGl) {
+            return;
+        }
         this.sfxBus.setVolume(this.sfxSlider.value);
     }
 
     public void OnToggleMusicMenu() {
+        if (this.isWebGl) {
+            return;
+        }
         this.musicMenu.SetActive(!this.musicMenu.activeSelf);
     }
 
@@ -95,6 +135,13 @@ public class AudioManager : MonoBehaviour {
     }
 
     private void InitializeMusic(EventReference musicEventReference) {
+        if (this.isWebGl) {
+            this.audioSource.clip = this.music;
+            this.audioSource.loop = true;
+            this.audioSource.Play();
+            return;
+        }
+
         this.musicEventInstance = RuntimeManager.CreateInstance(musicEventReference);
         this.eventInstances.Add(musicEventInstance);
         this.musicEventInstance.start();
@@ -116,7 +163,31 @@ public class AudioManager : MonoBehaviour {
     }
 
     // Functions
-    public void PlayOneShot(EventReference sound, Vector3? worldPosition = null) {
+    public void PlayOneShot(string webGlBackupName, EventReference sound, Vector3? worldPosition = null) {
+        if (this.isWebGl) {
+            AudioClip[] soundArray;
+
+            switch (webGlBackupName) {
+                case "moveSound":
+                    soundArray = this.sfxMove;
+                    break;
+
+                case "twistSound":
+                    soundArray = this.sfxTwist;
+                    break;
+
+                //case "hurtSound":
+                //    //soundArray = this.sfxHurt;
+                //    break;
+
+                default:
+                    throw new System.Exception("Unknown sound array name '" + webGlBackupName + "'");
+            }
+
+            int randomIndex = Random.Range(0, soundArray.Length);
+            audioSource.PlayOneShot(soundArray[randomIndex]);
+            return;
+        }
         RuntimeManager.PlayOneShot(sound, (worldPosition.HasValue ? worldPosition.Value : this.gameObject.transform.position));
     }
 

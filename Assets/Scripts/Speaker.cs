@@ -18,13 +18,13 @@ public class Speaker : MonoBehaviour {
 		if (this.speakerReference == TypewriterEvents.instance.speaker_nothing) {
 			return;
 		}
-        TypewriterEvents.instance.speakerLookup.Speakers.Add(this.speakerReference.ID, this);
+        TypewriterEvents.instance.speakerLookup.Add(this.speakerReference.ID, this);
     }
 
     void OnDisable() {
 		if (this.speakerReference == TypewriterEvents.instance.speaker_nothing) {
 			return;
 		}
-        TypewriterEvents.instance.speakerLookup.Speakers.Remove(this.speakerReference.ID);
+        TypewriterEvents.instance.speakerLookup.Remove(this.speakerReference.ID);
     }
 }
