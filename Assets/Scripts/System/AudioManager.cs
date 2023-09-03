@@ -33,7 +33,7 @@ public class AudioManager : MonoBehaviour {
     private EventInstance ambianceEventInstance;
     private EventInstance musicEventInstance;
 
-    [SerializeField] private GameObject musicMenu;
+    [SerializeField] internal GameObject musicMenu;
     [SerializeField] private Slider masterSlider;
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider ambianceSlider;
@@ -61,7 +61,7 @@ public class AudioManager : MonoBehaviour {
 
 #if UNITY_WEBGL
         // WebGL is not playing nice with FMOD right now...
-        this.isWebGl = true;
+        //this.isWebGl = true;
 #endif
 
         this.eventInstances = new List<EventInstance>();
@@ -209,9 +209,23 @@ public class AudioManager : MonoBehaviour {
     }
 
     public void SetMusicArea(MusicArea area) {
+        if (this.isWebGl) {
+            return;
+        }
         this.musicEventInstance.setParameterByName("area", (float)area);
     }
+
     public void SetMusicState(MusicState state) {
+        if (this.isWebGl) {
+            return;
+        }
         this.musicEventInstance.setParameterByName("musicState", (float)state);
+    }
+
+    internal void SetSlimeForm(SlimeFormId state) {
+        if (this.isWebGl) {
+            return;
+        }
+        this.musicEventInstance.setParameterByName("slimeForm", (float)state);
     }
 }

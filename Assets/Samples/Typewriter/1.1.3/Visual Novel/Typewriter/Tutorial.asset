@@ -101,7 +101,7 @@ MonoBehaviour:
           InternalID: 0
         Triggers:
           List:
-          - InternalID: 303213
+          - InternalID: 303214
         Once: 0
         Padding: 0
         Criteria: []
@@ -729,7 +729,7 @@ MonoBehaviour:
           InternalID: 0
         Triggers:
           List:
-          - InternalID: 303153
+          - InternalID: 303213
         Once: 0
         Padding: 0
         Criteria: []

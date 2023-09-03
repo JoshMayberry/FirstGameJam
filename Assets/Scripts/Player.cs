@@ -17,7 +17,10 @@ internal static class AnimationState {
 }
 
 internal enum SlimeFormId {
-	Normal, Attack, Defend, Heal
+	Normal = 0,
+	Heal = 1,
+	Attack = 2,
+    Defend = 3
 }
 
 internal class SlimeForm {
@@ -121,8 +124,12 @@ public class Player : Speaker {
 		this.currentForm = this.SlimeCatalogue["Normal"];
 	}
 
+	void Start() {
+        AudioManager.instance.SetSlimeForm(this.currentForm.id);
+    }
+
     void Update() {
-		if (GameManager.instance.isGameOver || DialogManager.instance.isPlayerLocked) {
+		if (GameManager.instance.isGameOver || DialogManager.instance.isPlayerLocked || AudioManager.instance.musicMenu.activeSelf) {
 			return;
 		}
 
@@ -138,7 +145,7 @@ public class Player : Speaker {
 	}
 
 	private void FixedUpdate() {
-		if (GameManager.instance.isGameOver || DialogManager.instance.isPlayerLocked || this.isSlamming) {
+		if (GameManager.instance.isGameOver || DialogManager.instance.isPlayerLocked || this.isSlamming || AudioManager.instance.musicMenu.activeSelf) {
 			return;
 		}
 
@@ -223,7 +230,7 @@ public class Player : Speaker {
 	}
 
 	void SetForm(string newForm) {
-		if ((GameManager.instance.isGameOver) || DialogManager.instance.isPlayerLocked || this.isTwisting || this.isActing || (newForm == this.currentForm.key)) {
+		if ((GameManager.instance.isGameOver) || DialogManager.instance.isPlayerLocked || this.isTwisting || this.isActing || AudioManager.instance.musicMenu.activeSelf || (newForm == this.currentForm.key)) {
 			return;
 		}
 
@@ -303,6 +310,7 @@ public class Player : Speaker {
 				this.currentForm = this.nextForm;
 				this.currentForm.animator.gameObject.SetActive(true);
 				this.SetAnimation(AnimationState.TwistOut, true);
+				AudioManager.instance.SetSlimeForm(this.currentForm.id);
 				break;
 
 			case AnimationState.TwistOut:
