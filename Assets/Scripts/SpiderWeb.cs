@@ -7,7 +7,7 @@ public class SpiderWeb : MonoBehaviour {
     public MiniMapIcon miniMapIcon;
     public Sprite brokenWebSprite;
   
-    void OnTriggerEnter2D(Collider2D other) {
+    void OnTriggerStay2D(Collider2D other) {
         switch(other.tag) {
             case "Player":
                 if (GameManager.instance.player.isCutting) {

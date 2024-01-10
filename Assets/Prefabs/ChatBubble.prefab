@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &606474982872339512
 Transform:
   m_ObjectHideFlags: 0
@@ -173,43 +173,11 @@ MonoBehaviour:
     InternalID: 303217
   charsPerSecond: 32
   startTime: 0
-  currentEntry:
-    ID: 0
-    Key: 
-    Scope:
-      InternalID: 0
-    Triggers:
-      List: []
-    Once: 0
-    Padding: 0
-    Criteria: []
-    Modifications: []
-    OnApply: []
-    OnInvoke: []
-    Speed: 1
-    IsChoice: 0
-    IsPlayerLocked: 0
-    Text: 
-    _speaker:
-      InternalID: 0
-  currentSpeaker: {fileID: 0}
   isActive: 0
   isTextCompleted: 0
   isLastDialog: 0
   isPersonal: 0
   isSoftResetAfterConversation: 0
-  isCancelWhenLeavesArea: 0
-  areaFlag:
-    ID: 0
-    Key: 
-    Scope:
-      InternalID: 0
-    Triggers:
-      List: []
-    Once: 0
-    Padding: 0
-    Criteria: []
-    Modifications: []
 --- !u!58 &6324630478383625476
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -263,7 +231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8683086711028121161
 RectTransform:
   m_ObjectHideFlags: 0
@@ -434,7 +402,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7803799600058413399
 RectTransform:
   m_ObjectHideFlags: 0
